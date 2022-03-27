@@ -1,16 +1,25 @@
-import { React, useState } from "react";
-import Sidebar from "../../components/sidebar/Sidebar";
-import Navbar from "../../components/navbar/Navbar";
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import "./New.scss";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-const REGISTER_URL = "http://localhost:3000/api/v1/users/signup";
+import { React, useState } from 'react';
+import Sidebar from '../../components/sidebar/Sidebar';
+import Navbar from '../../components/navbar/Navbar';
+import DriveFolderUploadOutlinedIcon from '@mui/icons-material/DriveFolderUploadOutlined';
+import './New.scss';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+
+const REGISTER_URL = 'http://localhost:3000/api/v1/users/signup';
 
 const New = ({ title, input }) => {
   const navigate = useNavigate();
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState('');
   const {
     register,
     handleSubmit,
@@ -21,7 +30,7 @@ const New = ({ title, input }) => {
     const response = await axios.post(REGISTER_URL, data);
     console.log(response);
     console.log(response?.data);
-    navigate("/users", { replace: true });
+    navigate('/users', { replace: true });
   };
 
   return (
@@ -38,14 +47,74 @@ const New = ({ title, input }) => {
               src={
                 file
                   ? URL.createObjectURL(file)
-                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                  : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg'
               }
               alt=""
             />
           </div>
           <div className="right">
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="formInput">
+              <Box sx={{ flexGrow: 3 }}>
+                <Grid container spacing={2}>
+                  <Grid item xs={6}>
+                    <label htmlFor="file">
+                      Iamge: <DriveFolderUploadOutlinedIcon />
+                    </label>
+                    <input
+                      type="file"
+                      id="file"
+                      onChange={(e) => setFile(e.target.files[0])}
+                      style={{ display: 'none' }}
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      sx={{ m: 1, width: '75%' }}
+                      id="outlined-basic"
+                      label="Outlined"
+                      variant="standard"
+                    />{' '}
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      sx={{ m: 1, width: '75%' }}
+                      id="outlined-basic"
+                      label="Outlined"
+                      variant="standard"
+                    />{' '}
+                  </Grid>
+                  <Grid item xs={6}>
+                    <FormControl
+                      variant="standard"
+                      sx={{ m: 1, minWidth: 120 }}
+                    >
+                      <InputLabel id="demo-simple-select-standard-label">
+                        Age
+                      </InputLabel>
+                      <Select
+                        labelId="demo-simple-select-standard-label"
+                        id="demo-simple-select-standard"
+                        value={'age'}
+                        label="Age"
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={10}>Ten</MenuItem>
+                        <MenuItem value={20}>Twenty</MenuItem>
+                        <MenuItem value={30}>Thirty</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <div className="formInput">
+                      <button>Send</button>
+                    </div>
+                  </Grid>
+                </Grid>
+              </Box>
+
+              {/* <div className="formInput">
                 <label htmlFor="file">
                   Iamge: <DriveFolderUploadOutlinedIcon />
                 </label>
@@ -118,7 +187,7 @@ const New = ({ title, input }) => {
               {errors.address?.zip && <span>zip code is required</span>}
               <div className="formInput">
                 <button>Send</button>
-              </div>
+              </div> */}
             </form>
           </div>
         </div>
