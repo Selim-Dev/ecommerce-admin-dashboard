@@ -30,11 +30,12 @@ const Datatable = () => {
       );
     };
     GetUsers();
-  }, []);
-  console.log(data);
+  }, [data]);
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+  const handleDelete = async (id) => {
+    await axios.delete(`http://localhost:3000/api/v1/users/${id}`).then(() => {
+      setData(data.filter((item) => item.id !== id));
+    });
   };
 
   const actionColumn = [
@@ -53,7 +54,7 @@ const Datatable = () => {
             </Link>
             <div
               className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row._id)}
             >
               Delete
             </div>
