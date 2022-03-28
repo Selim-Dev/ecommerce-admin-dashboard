@@ -1,8 +1,8 @@
 import { React, useState } from 'react';
-import Sidebar from '../../sidebar/Sidebar';
-import Navbar from '../../navbar/Navbar';
+import Sidebar from '../../../components/sidebar/Sidebar';
+import Navbar from '../../../components/navbar/Navbar';
 import DriveFolderUploadOutlinedIcon from '@mui/icons-material/DriveFolderUploadOutlined';
-import './New.scss';
+import './Edit.scss';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -45,7 +45,7 @@ const New = ({ title, input }) => {
           </div>
           <div className="right">
             <form onSubmit={handleSubmit(onSubmit)}>
-              {/* <div className="formInput">
+              <div className="formInput">
                 <label htmlFor="file">
                   Iamge: <DriveFolderUploadOutlinedIcon />
                 </label>
@@ -53,18 +53,18 @@ const New = ({ title, input }) => {
                   type="file"
                   id="file"
                   onChange={(e) => setFile(e.target.files[0])}
-                  style={{ display: "none" }}
+                  style={{ display: 'none' }}
                 />
               </div>
               <div className="formInput">
                 <label>Name</label>
-                <input {...register("name", { required: true })} />
+                <input {...register('name', { required: true })} />
               </div>
               {errors.name && <span>Name is required</span>}
               <div className="formInput">
                 <label>Email</label>
                 <input
-                  {...register("email", {
+                  {...register('email', {
                     required: true,
                     pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                   })}
@@ -73,24 +73,24 @@ const New = ({ title, input }) => {
               {errors.email && <span>Email is required</span>}
               <div className="formInput">
                 <label>Password</label>
-                <input {...register("password", { required: true })} />
+                <input {...register('password', { required: true })} />
               </div>
               {errors.password && <span>password is required</span>}
               <div className="formInput">
                 <label>PasswordConfirm</label>
-                <input {...register("passwordConfirm", { required: true })} />
+                <input {...register('passwordConfirm', { required: true })} />
               </div>
               {errors.passwordConfirm && (
                 <span>passwordConfirm is required</span>
               )}
               <div className="formInput">
                 <label>phone</label>
-                <input {...register("phone", { required: true })} />
+                <input {...register('phone', { required: true })} />
               </div>
               {errors.phone && <span>phone is required</span>}
               <div className="formInput">
                 <label>role</label>
-                <select {...register("role", { required: true })}>
+                <select {...register('role', { required: true })}>
                   <option value="user">user</option>0.
                   <option value="seller">seller</option>
                 </select>
@@ -98,27 +98,27 @@ const New = ({ title, input }) => {
               {errors.role && <span>role is required</span>}
               <div className="formInput">
                 <label>Country</label>
-                <input {...register("address.country", { required: true })} />
+                <input {...register('address.country', { required: true })} />
               </div>
               {errors.address?.country && <span>country is required</span>}
               <div className="formInput">
                 <label>City</label>
-                <input {...register("address.city", { required: true })} />
+                <input {...register('address.city', { required: true })} />
               </div>
               {errors.address?.city && <span>city is required</span>}
               <div className="formInput">
                 <label>Street</label>
-                <input {...register("address.street", { required: true })} />
+                <input {...register('address.street', { required: true })} />
               </div>
               {errors.address?.street && <span>street is required</span>}
               <div className="formInput">
                 <label>Zip Code</label>
-                <input {...register("address.zip", { required: true })} />
+                <input {...register('address.zip', { required: true })} />
               </div>
               {errors.address?.zip && <span>zip code is required</span>}
               <div className="formInput">
                 <button>Send</button>
-              </div> */}
+              </div>
             </form>
           </div>
         </div>

@@ -1,6 +1,6 @@
-import './OrderDatatable.scss';
+import './Index.scss';
 import { DataGrid } from '@mui/x-data-grid';
-import { userColumns } from '../../dataTabelSrc';
+import { userColumns } from '../../../dataTabelSrc';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -66,9 +66,9 @@ const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Add New User
-        <Link to="/users/new" className="link">
-          Add New User
+        Orders
+        <Link to="/orders/create" className="link">
+          Add New Orders
         </Link>
       </div>
       <DataGrid
