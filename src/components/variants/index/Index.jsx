@@ -1,6 +1,6 @@
-import "./dataTable.scss";
+import "./Index.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns } from "../../dataTabelSrc";
+import { variantColumns } from "../../../dataTabelSrc";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -9,35 +9,32 @@ const Datatable = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     const GetUsers = async () => {
-      const result = await axios.get("http://localhost:3000/api/v1/users");
+      const result = await axios.get("http://localhost:3000/api/v1/variant");
       setData(
         result?.data?.data?.data &&
           result?.data?.data?.data.map((item, index) => {
             return {
               id: index,
-              photo: item.photo,
-              phone: item.phone,
               name: item.name,
-              email: item.email,
-              city: item.address.city,
-              country: item.address.country,
-              role: item.role,
-              street: item.address.street,
-              zip: item.address.zip,
               _id: item._id,
             };
           })
       );
     };
     GetUsers();
-  }, []);
-  // console.log(data);
+  }, [data]);
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:3000/api/v1/users/${id}`).then(() => {
-      setData(() => data.filter((item) => item.id !== id));
-      window.location.reload();
-    });
+    await axios
+      .delete(`http://localhost:3000/api/v1/variant/${id}`, {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDEzNzg4NjUzYzU2MzE0MGFjMzA1OCIsImlhdCI6MTY0ODQ0MTI2NCwiZXhwIjoxNjU2MjE3MjY0fQ.f2SGUclDUhi8kAaS0pPR5alu0pSmp4P7uhWv43v2S2A",
+        },
+      })
+      .then(() => {
+        setData(data.filter((item) => item.id !== id));
+      });
   };
 
   const actionColumn = [
@@ -48,12 +45,9 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link
-              to={`/users/${params.row._id}`}
-              style={{ textDecoration: "none" }}
-            >
-              <div className="viewButton">View</div>
-            </Link>
+            <div className="deleteButton">
+              <Link to={`/variants/${params.row._id}/Edit`}>Edit Variant</Link>
+            </div>
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row._id)}
@@ -68,15 +62,15 @@ const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Add New User
-        <Link to="/users/new" className="link">
-          Add New User
+        Variants
+        <Link to="/variants/create" className="link">
+          Add New Variant
         </Link>
       </div>
       <DataGrid
         className="datagrid"
         rows={data}
-        columns={userColumns.concat(actionColumn)}
+        columns={variantColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
         checkboxSelection

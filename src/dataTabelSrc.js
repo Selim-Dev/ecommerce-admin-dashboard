@@ -13,55 +13,8 @@ export const userColumns = [
       );
     },
   },
-  {
-    field: "email",
-    headerName: "Email",
-    width: 150,
-  },
-
-  {
-    field: "phone",
-    headerName: "phone",
-    width: 120,
-  },
-  {
-    field: "role",
-    headerName: "Role",
-    width: 80,
-  },
-  {
-    field: "country",
-    headerName: "Country",
-    width: 100,
-  },
-  {
-    field: "city",
-    headerName: "City",
-    flex: 1,
-    width: 100,
-  },
-  {
-    field: "street",
-    headerName: "Street",
-    width: 100,
-    flex: 1,
-  },
-  {
-    field: "zip",
-    headerName: "Zip Code",
-    width: 100,
-    flex: 1,
-  },
-  {
-    field: "status",
-    headerName: "Status",
-    width: 100,
-    renderCell: (params) => {
-      return (
-        <div className={`cellWithStatus ${params.row.status}`}>
-          {params.row.status}
-        </div>
-      );
-    },
-  },
+];
+export const variantColumns = [
+  { field: "id", headerName: "ID", width: 40 },
+  { field: "name", headerName: "Name", width: 120 },
 ];

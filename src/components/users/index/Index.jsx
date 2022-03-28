@@ -1,6 +1,6 @@
-import "./dataTable.scss";
+import "./Index.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns } from "../../dataTabelSrc";
+import { userColumns } from "../../../dataTabelSrc";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -30,13 +30,11 @@ const Datatable = () => {
       );
     };
     GetUsers();
-  }, []);
-  // console.log(data);
+  }, [data]);
 
   const handleDelete = async (id) => {
     await axios.delete(`http://localhost:3000/api/v1/users/${id}`).then(() => {
-      setData(() => data.filter((item) => item.id !== id));
-      window.location.reload();
+      setData(data.filter((item) => item.id !== id));
     });
   };
 
@@ -68,9 +66,9 @@ const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Add New User
-        <Link to="/users/new" className="link">
-          Add New User
+        Orders
+        <Link to="/orders/create" className="link">
+          Add New Orders
         </Link>
       </div>
       <DataGrid
