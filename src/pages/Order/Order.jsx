@@ -3,7 +3,6 @@ import './Order.scss';
 import Sidebar from '../../components/sidebar/Sidebar';
 import Navbar from '../../components/navbar/Navbar';
 import Datatable from '../../components/orders/index/Index';
-
 const List = () => {
   return (
     <div className="list">

@@ -6,6 +6,18 @@ import Order from './pages/Order/Order';
 import CreateOrder from './components/orders/create/Create';
 import EditOrder from './components/orders/edit/Edit';
 import ShowOrder from './components/orders/show/Show';
+// heroes
+import Hero from './pages/Hero/Hero';
+import CreateHero from './components/heroes/create/Create';
+import EditHero from './components/heroes/edit/Edit';
+// categories
+import Category from './pages/Category/Category';
+import CreateCategory from './components/categories/create/Create';
+import EditCategory from './components/categories/edit/Edit';
+// sub categories
+import SubCategory from './pages/SubCategory/SubCategory';
+import CreateSubCategory from './components/subCategories/create/Create';
+import EditSubCategory from './components/subCategories/edit/Edit';
 
 import LogIn from './pages/login/LogIn';
 import New from './pages/new/New';
@@ -20,9 +32,9 @@ function App() {
     <div className={darkMode ? 'app dark' : 'app'}>
       <BrowserRouter>
         <Routes>
-          <Route path="/">
+          <Route path="dashboard">
             <Route index element={<Home />} />
-            <Route path="login" element={<LogIn />} />
+            {/* <Route path="login" element={<LogIn />} /> */}
             <Route path="users">
               <Route index element={<List />} />
               <Route path=":userId" element={<Single />} />
@@ -39,6 +51,7 @@ function App() {
                 element={<New input={productInputs} title="Add New Product" />}
               />
             </Route>
+            {/* Orders */}
             <Route path="orders">
               <Route index element={<Order />} />
               <Route path=":orderId/show" element={<ShowOrder />} />
@@ -48,6 +61,30 @@ function App() {
                 element={
                   <CreateOrder input={orderInputs} title="Add New Order" />
                 }
+              />
+            </Route>
+            {/* Heroes */}
+            <Route path="heroes">
+              <Route index element={<Hero />} />
+              <Route path=":heroId/edit" element={<EditHero />} />
+              <Route
+                path="create"
+                element={<CreateHero title="Add New Hero" />}
+              />
+            </Route>
+            {/* Categories */}
+            <Route path="Categories">
+              <Route index element={<Category />} />
+              <Route path=":categoryId/edit" element={<EditCategory />} />
+              <Route path="create" element={<CreateCategory />} />
+            </Route>
+            {/* Sub Categories */}
+            <Route path="subCategories">
+              <Route index element={<SubCategory />} />
+              <Route path="create" element={<CreateSubCategory />} />
+              <Route
+                path=":subCategoryId/category/:categoryId/edit"
+                element={<EditSubCategory />}
               />
             </Route>
           </Route>
