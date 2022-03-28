@@ -1,23 +1,49 @@
-import { React, useState } from 'react';
+import { useState } from 'react';
 import Sidebar from '../../components/sidebar/Sidebar';
 import Navbar from '../../components/navbar/Navbar';
-import DriveFolderUploadOutlinedIcon from '@mui/icons-material/DriveFolderUploadOutlined';
+import NewCategory from '../../components/catogery/newCategory/NewCategory';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import './New.scss';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Box from '@mui/material/Box';
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
+import Input from '@mui/material/Input';
 import TextField from '@mui/material/TextField';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const REGISTER_URL = 'http://localhost:3000/api/v1/users/signup';
 
 const New = ({ title, input }) => {
+  const [values, setValues] = useState({
+    amount: '',
+    password: '',
+    weight: '',
+    weightRange: '',
+    showPassword: false,
+  });
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
+
+  const handleClickShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword,
+    });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
   const navigate = useNavigate();
   const [file, setFile] = useState('');
   const {
@@ -34,35 +60,37 @@ const New = ({ title, input }) => {
   };
 
   return (
-    <div className="new">
+    <div className='new'>
       <Sidebar />
-      <div className="newContainer">
+      <div className='newContainer'>
         <Navbar />
-        <div className="top">
+        <div className='top'>
           <h1>{title}</h1>
         </div>
-        <div className="bottom">
-          <div className="left">
+        <div className='bottom'>
+          <div className='left'>
             <img
               src={
                 file
                   ? URL.createObjectURL(file)
                   : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg'
               }
-              alt=""
+              alt=''
             />
           </div>
-          <div className="right">
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <Box sx={{ flexGrow: 3 }}>
+          <div className='right'>
+            {/* <form onSubmit={handleSubmit(onSubmit)}> */}
+            {/* ********************************************************************************************************* */}
+            <NewCategory setFile={setFile} />
+            {/* <Box sx={{ flexGrow: 3 }}>
                 <Grid container spacing={2}>
                   <Grid item xs={6}>
-                    <label htmlFor="file">
-                      Iamge: <DriveFolderUploadOutlinedIcon />
+                    <label htmlFor='file'>
+                      Iamge: <PhotoCamera />
                     </label>
                     <input
-                      type="file"
-                      id="file"
+                      type='file'
+                      id='file'
                       onChange={(e) => setFile(e.target.files[0])}
                       style={{ display: 'none' }}
                     />
@@ -70,51 +98,136 @@ const New = ({ title, input }) => {
                   <Grid item xs={6}>
                     <TextField
                       sx={{ m: 1, width: '75%' }}
-                      id="outlined-basic"
-                      label="Outlined"
-                      variant="standard"
-                    />{' '}
+                      id='outlined-basic'
+                      label='Username'
+                      variant='standard'
+                    />
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
                       sx={{ m: 1, width: '75%' }}
-                      id="outlined-basic"
-                      label="Outlined"
-                      variant="standard"
+                      id='outlined-basic'
+                      label='Name and surname'
+                      variant='standard'
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      sx={{ m: 1, width: '75%' }}
+                      id='outlined-basic'
+                      label='Email'
+                      variant='standard'
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      sx={{ m: 1, width: '75%' }}
+                      id='outlined-basic'
+                      label='Phone'
+                      variant='standard'
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      sx={{ m: 1, width: '75%' }}
+                      id='outlined-basic'
+                      label='Country'
+                      variant='standard'
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      sx={{ m: 1, width: '75%' }}
+                      id='outlined-basic'
+                      label='City'
+                      variant='standard'
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      sx={{ m: 1, width: '75%' }}
+                      id='outlined-basic'
+                      label='Zip code'
+                      variant='standard'
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <FormControl
+                      sx={{ m: 1, width: '25ch' }}
+                      variant='standard'
+                    >
+                      <InputLabel htmlFor='standard-adornment-password'>
+                        Password
+                      </InputLabel>
+                      <Input
+                        id='standard-adornment-password'
+                        type={values.showPassword ? 'text' : 'password'}
+                        value={values.password}
+                        onChange={handleChange('password')}
+                        endAdornment={
+                          <InputAdornment position='end'>
+                            <IconButton
+                              aria-label='toggle password visibility'
+                              onClick={handleClickShowPassword}
+                              onMouseDown={handleMouseDownPassword}
+                            >
+                              {values.showPassword ? (
+                                <VisibilityOff />
+                              ) : (
+                                <Visibility />
+                              )}
+                            </IconButton>
+                          </InputAdornment>
+                        }
+                      />
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      sx={{ m: 1, width: '75%' }}
+                      id='outlined-basic'
+                      label='Address'
+                      variant='standard'
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      sx={{ m: 1, width: '75%' }}
+                      id='outlined-basic'
+                      label='Outlined'
+                      variant='standard'
+                      error={true}
+                      helperText={'' === '' ? 'Empty field!' : ' '}
                     />{' '}
                   </Grid>
                   <Grid item xs={6}>
                     <FormControl
-                      variant="standard"
+                      variant='standard'
                       sx={{ m: 1, minWidth: 120 }}
                     >
-                      <InputLabel id="demo-simple-select-standard-label">
-                        Age
+                      <InputLabel id='demo-simple-select-standard-label'>
+                        Roul
                       </InputLabel>
                       <Select
-                        labelId="demo-simple-select-standard-label"
-                        id="demo-simple-select-standard"
-                        value={'age'}
-                        label="Age"
+                        labelId='demo-simple-select-standard-label'
+                        id='demo-simple-select-standard'
+                        value={'Mustafa'}
+                        label='Age'
                       >
-                        <MenuItem value="">
-                          <em>None</em>
-                        </MenuItem>
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
+                        <MenuItem value={'user'}>user</MenuItem>
+                        <MenuItem value={'seller'}>seller</MenuItem>
                       </Select>
                     </FormControl>
                   </Grid>
                   <Grid item xs={12}>
-                    <div className="formInput">
+                    <div className='formInput'>
                       <button>Send</button>
                     </div>
                   </Grid>
                 </Grid>
-              </Box>
-
-              {/* <div className="formInput">
+              </Box> */}
+            {/* ********************************************************************************************************* */}
+            {/* <div className="formInput">
                 <label htmlFor="file">
                   Iamge: <DriveFolderUploadOutlinedIcon />
                 </label>
@@ -188,7 +301,7 @@ const New = ({ title, input }) => {
               <div className="formInput">
                 <button>Send</button>
               </div> */}
-            </form>
+            {/* </form> */}
           </div>
         </div>
       </div>

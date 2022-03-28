@@ -3,14 +3,16 @@ import './List.scss';
 import Sidebar from '../../components/sidebar/Sidebar';
 import Navbar from '../../components/navbar/Navbar';
 import DataTabel from '../../components/dataTable/DataTabel';
+import DataTabelCategory from '../../components/catogery/dataTabelCategory/DataTabelCategory';
 
 const List = () => {
   return (
-    <div className="list">
+    <div className='list'>
       <Sidebar />
-      <div className="listContainer">
+      <div className='listContainer'>
         <Navbar />
-        <DataTabel />
+        {/* <DataTabel /> */}
+        <DataTabelCategory />
       </div>
     </div>
   );
