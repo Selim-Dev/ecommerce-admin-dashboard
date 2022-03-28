@@ -57,7 +57,6 @@ const EditeCategory = ({ setFile }) => {
                 })}
                 helperText={errors.name ? 'This field is required' : ''}
               />
-              {/* {errors.name && <p>This field is required.</p>} */}
             </Grid>
             <Grid item xs={6}>
               <Button type='submit' variant='contained'>
