@@ -6,14 +6,14 @@ import "./New.scss";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
-import Select from "@mui/material/Select";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
+// import Box from "@mui/material/Box";
+// import TextField from "@mui/material/TextField";
+// import Paper from "@mui/material/Paper";
+// import Grid from "@mui/material/Grid";
+// import Select from "@mui/material/Select";
+// import InputLabel from "@mui/material/InputLabel";
+// import MenuItem from "@mui/material/MenuItem";
+// import FormControl from "@mui/material/FormControl";
 
 const REGISTER_URL = "http://localhost:3000/api/v1/users/signup";
 
@@ -128,8 +128,8 @@ const New = ({ title, input }) => {
               <div className="formInput">
                 <label>Name</label>
                 <input {...register("name", { required: true })} />
+                {errors.name && <span>Name is required</span>}
               </div>
-              {errors.name && <span>Name is required</span>}
               <div className="formInput">
                 <label>Email</label>
                 <input
@@ -138,13 +138,13 @@ const New = ({ title, input }) => {
                     pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                   })}
                 />
+                {errors.email && <span>Email is required</span>}
               </div>
-              {errors.email && <span>Email is required</span>}
               <div className="formInput">
                 <label>Password</label>
                 <input {...register("password", { required: true })} />
+                {errors.password && <span>password is required</span>}
               </div>
-              {errors.password && <span>password is required</span>}
               <div className="formInput">
                 <label>PasswordConfirm</label>
                 <input {...register("passwordConfirm", { required: true })} />
@@ -155,36 +155,36 @@ const New = ({ title, input }) => {
               <div className="formInput">
                 <label>phone</label>
                 <input {...register("phone", { required: true })} />
+                {errors.phone && <span>phone is required</span>}
               </div>
-              {errors.phone && <span>phone is required</span>}
               <div className="formInput">
                 <label>role</label>
                 <select {...register("role", { required: true })}>
                   <option value="user">user</option>0.
                   <option value="seller">seller</option>
                 </select>
+                {errors.role && <span>role is required</span>}
               </div>
-              {errors.role && <span>role is required</span>}
               <div className="formInput">
                 <label>Country</label>
                 <input {...register("address.country", { required: true })} />
+                {errors.address?.country && <span>country is required</span>}
               </div>
-              {errors.address?.country && <span>country is required</span>}
               <div className="formInput">
                 <label>City</label>
                 <input {...register("address.city", { required: true })} />
+                {errors.address?.city && <span>city is required</span>}
               </div>
-              {errors.address?.city && <span>city is required</span>}
               <div className="formInput">
                 <label>Street</label>
                 <input {...register("address.street", { required: true })} />
+                {errors.address?.street && <span>street is required</span>}
               </div>
-              {errors.address?.street && <span>street is required</span>}
               <div className="formInput">
                 <label>Zip Code</label>
                 <input {...register("address.zip", { required: true })} />
+                {errors.address?.zip && <span>zip code is required</span>}
               </div>
-              {errors.address?.zip && <span>zip code is required</span>}
               <div className="formInput">
                 <button>Send</button>
               </div>

@@ -1,3 +1,12 @@
+export const variantColumns = [
+  { field: "id", headerName: "ID", width: 100 },
+  { field: "name", headerName: "Name", width: 300 },
+  { field: "variantName", headerName: "variantName", width: 300 },
+];
+export const variantOptionColumns = [
+  { field: "id", headerName: "ID", width: 400 },
+  { field: "name", headerName: "Name", width: 400 },
+];
 export const userColumns = [
   { field: "id", headerName: "ID", width: 40 },
   {
@@ -13,8 +22,55 @@ export const userColumns = [
       );
     },
   },
-];
-export const variantColumns = [
-  { field: "id", headerName: "ID", width: 40 },
-  { field: "name", headerName: "Name", width: 120 },
+  {
+    field: "email",
+    headerName: "Email",
+    width: 150,
+  },
+
+  {
+    field: "phone",
+    headerName: "phone",
+    width: 120,
+  },
+  {
+    field: "role",
+    headerName: "Role",
+    width: 80,
+  },
+  {
+    field: "country",
+    headerName: "Country",
+    width: 100,
+  },
+  {
+    field: "city",
+    headerName: "City",
+    flex: 1,
+    width: 100,
+  },
+  {
+    field: "street",
+    headerName: "Street",
+    width: 100,
+    flex: 1,
+  },
+  {
+    field: "zip",
+    headerName: "Zip Code",
+    width: 100,
+    flex: 1,
+  },
+  {
+    field: "status",
+    headerName: "Status",
+    width: 100,
+    renderCell: (params) => {
+      return (
+        <div className={`cellWithStatus ${params.row.status}`}>
+          {params.row.status}
+        </div>
+      );
+    },
+  },
 ];

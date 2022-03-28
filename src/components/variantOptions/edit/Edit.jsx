@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 const token =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyM2ZhODA3YmVkZjczNTFkOGQxZGEzZiIsImlhdCI6MTY0ODUwOTczNSwiZXhwIjoxNjU2Mjg1NzM1fQ.dTClfQzGfSkHMbpAr342UvUiWRqLM9BeB1MNEKjZGfw";
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDI0NDNiZDNkODVjM2Y4MGM0MThhMSIsImlhdCI6MTY0ODUxMDAxMSwiZXhwIjoxNjU2Mjg2MDExfQ.qnEsXaehGOsZXm3IUw50M7dI14zpj3Z5FsARXt4-RyA";
 const New = ({ title, input }) => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
@@ -16,12 +16,12 @@ const New = ({ title, input }) => {
     setValue,
     formState: { errors },
   } = useForm();
-  const { variantId } = useParams();
+  const { variantOptionId } = useParams();
 
   useEffect(() => {
     const getSingleVariant = async () => {
       const response = await axios.get(
-        `http://localhost:3000/api/v1/variant/${variantId}`,
+        `http://localhost:3000/api/v1/variantOption/${variantOptionId}`,
         data
       );
       if (response?.data?.data?.data) {
@@ -29,11 +29,11 @@ const New = ({ title, input }) => {
       }
     };
     getSingleVariant();
-  }, [data, setValue, variantId]);
+  }, [data, setValue, variantOptionId]);
 
   const onSubmit = async (data) => {
     await axios.patch(
-      `http://localhost:3000/api/v1/variant/${variantId}`,
+      `http://localhost:3000/api/v1/variantOption/${variantOptionId}`,
       data,
       {
         headers: {
@@ -41,7 +41,7 @@ const New = ({ title, input }) => {
         },
       }
     );
-    navigate("/variants", { replace: true });
+    navigate("/variantOptions", { replace: true });
   };
 
   return (
@@ -58,7 +58,7 @@ const New = ({ title, input }) => {
               <div className="formInput">
                 <label>Variant Name</label>
                 <input {...register("name", { required: true })} />
-                {errors.name && <span>Variant Name is required</span>}
+                {errors.name && <span>VariantOption Name is required</span>}
               </div>
               <div className="formInput">
                 <button>Send</button>

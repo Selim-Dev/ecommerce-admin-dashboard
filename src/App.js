@@ -11,6 +11,10 @@ import Variant from "./pages/Variant/Variant";
 import CreateVariant from "./components/variants/create/Create";
 import EditVariant from "./components/variants/edit/Edit";
 
+import VariantsOptions from "./pages/VariantOptions/VariantOptions";
+import CreateVariantOptions from "./components/variantOptions/create/Create";
+import EditVariantOptions from "./components/variantOptions/edit/Edit";
+
 import LogIn from "./pages/login/LogIn";
 import New from "./pages/new/New";
 import Single from "./pages/single/Single";
@@ -51,6 +55,19 @@ function App() {
               <Route
                 path="create"
                 element={<CreateVariant title="Add New variant" />}
+              />
+            </Route>
+            <Route path="variantOptions">
+              <Route index element={<VariantsOptions />} />
+              <Route
+                path="variant/:variantId/:variantOptionId/edit"
+                element={<EditVariantOptions />}
+              />
+              <Route
+                path="create"
+                element={
+                  <CreateVariantOptions title="Add New variant option" />
+                }
               />
             </Route>
           </Route>

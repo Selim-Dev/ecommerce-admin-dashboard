@@ -59,6 +59,12 @@ const Sidebar = () => {
               <span>Variants</span>
             </li>
           </Link>
+          <Link to="/variantOptions" style={{ textDecoration: "none" }}>
+            <li>
+              <CreditCardIcon className="icon" />
+              <span>VariantOptions</span>
+            </li>
+          </Link>
 
           <li>
             <LocalShippingIcon className="icon" />
