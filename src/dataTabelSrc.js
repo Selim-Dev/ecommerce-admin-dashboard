@@ -2,7 +2,7 @@ export const userColumns = [
   { field: "id", headerName: "ID", width: 40 },
   {
     field: "name",
-    headerName: "Photo&UserName",
+    headerName: "Product Name",
     width: 160,
     renderCell: (params) => {
       return (
@@ -14,24 +14,24 @@ export const userColumns = [
     },
   },
   {
-    field: "email",
-    headerName: "Email",
-    width: 150,
+    field: "listPrice",
+    headerName: "Price",
+    width: 100,
   },
 
   {
-    field: "phone",
-    headerName: "phone",
+    field: "category.name",
+    headerName: " Category",
     width: 120,
   },
   {
-    field: "role",
-    headerName: "Role",
-    width: 80,
+    field: "subvaterynsme",
+    headerName: "Sub Category",
+    width: 130,
   },
   {
-    field: "country",
-    headerName: "Country",
+    field: "ratingsAverage",
+    headerName: "Ratings",
     width: 100,
   },
   {
@@ -65,3 +65,74 @@ export const userColumns = [
     },
   },
 ];
+
+
+// export const userColumns = [
+//   { field: "id", headerName: "ID", width: 40 },
+//   {
+//     field: "name",
+//     headerName: "Photo&UserName",
+//     width: 160,
+//     renderCell: (params) => {
+//       return (
+//         <div className="cellWithImg">
+//           <img className="cellImg" src={params.row.photo} alt="" />
+//           {params.row.name}
+//         </div>
+//       );
+//     },
+//   },
+//   {
+//     field: "email",
+//     headerName: "hamada",
+//     width: 150,
+//   },
+
+//   {
+//     field: "phone",
+//     headerName: "phone",
+//     width: 120,
+//   },
+//   {
+//     field: "role",
+//     headerName: "Role",
+//     width: 80,
+//   },
+//   {
+//     field: "country",
+//     headerName: "Country",
+//     width: 100,
+//   },
+//   {
+//     field: "city",
+//     headerName: "City",
+//     flex: 1,
+//     width: 100,
+//   },
+//   {
+//     field: "street",
+//     headerName: "Street",
+//     width: 100,
+//     flex: 1,
+//   },
+//   {
+//     field: "zip",
+//     headerName: "Zip Code",
+//     width: 100,
+//     flex: 1,
+//   },
+//   {
+//     field: "status",
+//     headerName: "Status",
+//     width: 100,
+//     renderCell: (params) => {
+//       return (
+//         <div className={`cellWithStatus ${params.row.status}`}>
+//           {params.row.status}
+//         </div>
+//       );
+//     },
+//   },
+// ];
+
+

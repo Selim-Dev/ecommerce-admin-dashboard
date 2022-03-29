@@ -6,6 +6,10 @@ import Order from './pages/Order/Order';
 import CreateOrder from './components/orders/create/Create';
 import EditOrder from './components/orders/edit/Edit';
 import ShowOrder from './components/orders/show/Show';
+import Product from './pages/Product/Product';
+import CreateProduct from './components/products/create/Create';
+import EditProduct from './components/products/edit/Edit';
+import ShowProduct from './components/products/show/Show';
 
 import LogIn from './pages/login/LogIn';
 import New from './pages/new/New';
@@ -31,14 +35,7 @@ function App() {
                 element={<New input={userInputs} title="Add New User" />}
               />
             </Route>
-            <Route path="products">
-              <Route index element={<List />} />
-              <Route path=":productId" element={<Single />} />
-              <Route
-                path="new"
-                element={<New input={productInputs} title="Add New Product" />}
-              />
-            </Route>
+
             <Route path="orders">
               <Route index element={<Order />} />
               <Route path=":orderId/show" element={<ShowOrder />} />
@@ -47,6 +44,17 @@ function App() {
                 path="create"
                 element={
                   <CreateOrder input={orderInputs} title="Add New Order" />
+                }
+              />
+            </Route>
+            <Route path="products">
+              <Route index element={<Product />} />
+              <Route path=":productId/show" element={<ShowProduct />} />
+              <Route path=":productId/edit" element={<EditProduct />} />
+              <Route
+                path="create"
+                element={
+                  <CreateProduct input={productInputs} title="Add New Product" />
                 }
               />
             </Route>
