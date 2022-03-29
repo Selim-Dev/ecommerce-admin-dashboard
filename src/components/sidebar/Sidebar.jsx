@@ -15,6 +15,8 @@ import "./Sidebar.scss";
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import ImageIcon from "@mui/icons-material/Image";
+import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import EarbudsIcon from "@mui/icons-material/Earbuds";
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
@@ -53,7 +55,7 @@ const Sidebar = () => {
           </Link>
           <Link to="/dashboard/categories" style={{ textDecoration: "none" }}>
             <li>
-              <ImageIcon className="icon" />
+              <FormatListBulletedIcon className="icon" />
               <span>Categories</span>
             </li>
           </Link>
@@ -62,7 +64,7 @@ const Sidebar = () => {
             style={{ textDecoration: "none" }}
           >
             <li>
-              <ImageIcon className="icon" />
+              <FormatListBulletedIcon className="icon" />
               <span>Sub Categories</span>
             </li>
           </Link>
@@ -87,7 +89,7 @@ const Sidebar = () => {
           </Link>
           <Link to="/dashboard/variants" style={{ textDecoration: "none" }}>
             <li>
-              <CreditCardIcon className="icon" />
+              <EarbudsIcon className="icon" />
               <span>Variants</span>
             </li>
           </Link>
@@ -96,13 +98,13 @@ const Sidebar = () => {
             style={{ textDecoration: "none" }}
           >
             <li>
-              <CreditCardIcon className="icon" />
+              <EarbudsIcon className="icon" />
               <span>VariantOptions</span>
             </li>
           </Link>
 
-          <p className="title">USEFUL</p>
-          <li>
+          <p className="title">Control</p>
+          {/* <li>
             <InsertChartIcon className="icon" />
             <span>Stats</span>
           </li>
@@ -118,8 +120,8 @@ const Sidebar = () => {
           <li>
             <PsychologyOutlinedIcon className="icon" />
             <span>Logs</span>
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <SettingsApplicationsIcon className="icon" />
             <span>Settings</span>
           </li>
@@ -127,6 +129,10 @@ const Sidebar = () => {
           <li>
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>
+          </li> */}
+          <li>
+            <SettingsApplicationsIcon className="icon" />
+            <span>Settings</span>
           </li>
           <li>
             <ExitToAppIcon className="icon" />
