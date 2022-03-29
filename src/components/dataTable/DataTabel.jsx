@@ -1,15 +1,15 @@
-import "./dataTable.scss";
-import { DataGrid } from "@mui/x-data-grid";
-import { userColumns } from "../../dataTabelSrc";
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import './dataTable.scss';
+import { DataGrid } from '@mui/x-data-grid';
+import { ContactColumns } from '../../dataTabelSrc';
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Datatable = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     const GetUsers = async () => {
-      const result = await axios.get("http://localhost:3000/api/v1/users");
+      const result = await axios.get('http://localhost:3000/api/v1/users');
       setData(
         result?.data?.data?.data &&
           result?.data?.data?.data.map((item, index) => {
@@ -40,20 +40,20 @@ const Datatable = () => {
 
   const actionColumn = [
     {
-      field: "action",
-      headerName: "Action",
+      field: 'action',
+      headerName: 'Action',
       width: 200,
       renderCell: (params) => {
         return (
-          <div className="cellAction">
+          <div className='cellAction'>
             <Link
               to={`/users/${params.row._id}`}
-              style={{ textDecoration: "none" }}
+              style={{ textDecoration: 'none' }}
             >
-              <div className="viewButton">View</div>
+              <div className='viewButton'>View</div>
             </Link>
             <div
-              className="deleteButton"
+              className='deleteButton'
               onClick={() => handleDelete(params.row._id)}
             >
               Delete
@@ -64,17 +64,17 @@ const Datatable = () => {
     },
   ];
   return (
-    <div className="datatable">
-      <div className="datatableTitle">
+    <div className='datatable'>
+      <div className='datatableTitle'>
         Add New User
-        <Link to="/users/new" className="link">
+        <Link to='/users/new' className='link'>
           Add New User
         </Link>
       </div>
       <DataGrid
-        className="datagrid"
+        className='datagrid'
         rows={data}
-        columns={userColumns.concat(actionColumn)}
+        columns={ContactColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
         checkboxSelection

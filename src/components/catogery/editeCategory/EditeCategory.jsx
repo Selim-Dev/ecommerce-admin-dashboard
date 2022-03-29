@@ -10,15 +10,39 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 
 const EditeCategory = ({ setFile }) => {
-  const [error, setError] = useState(false);
+  const navigate = useNavigate();
+  const [img, setImg] = useState('');
+  const [name, setName] = useState('');
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-    setFile(data.file[0]);
+  const onSubmit = async (data) => {
+    try {
+      const image = await setFile(data.file[0]);
+      setImg(image);
+      setName(data.name);
+      const mok = {
+        name,
+        img,
+      };
+      const formData = new FormData();
+      formData.append('photo', data.file[0]);
+      formData.append('name', data.name);
+      const result = await axios.post(
+        'http://localhost:3000/api/v1/category/',
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDExOGJkZDM5ODg5MjBjODc0ZjUyMCIsImlhdCI6MTY0ODQ3NDcyMywiZXhwIjoxNjU2MjUwNzIzfQ.aavNeediEDxtYFF0gnX0WX9ymthnENqRNT0x8hnn2Zc'}`,
+          },
+        }
+      );
+      navigate('/category', { replace: true });
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <>

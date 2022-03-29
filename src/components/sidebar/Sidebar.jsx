@@ -12,6 +12,8 @@ import SettingsSystemDaydreamOutlinedIcon from '@mui/icons-material/SettingsSyst
 import PsychologyOutlinedIcon from '@mui/icons-material/PsychologyOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import CategoryIcon from '@mui/icons-material/Category';
+import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
+
 import './Sidebar.scss';
 import { Link } from 'react-router-dom';
 import { DarkModeContext } from '../../context/darkModeContext';
@@ -58,6 +60,12 @@ const Sidebar = () => {
             <CreditCardIcon className='icon' />
             <span>Orders</span>
           </li>
+          <Link to='/contact' style={{ textDecoration: 'none' }}>
+            <li>
+              <ConnectWithoutContactIcon className='icon' />
+              <span>Contact</span>
+            </li>
+          </Link>
           <li>
             <LocalShippingIcon className='icon' />
             <span>Delivery</span>

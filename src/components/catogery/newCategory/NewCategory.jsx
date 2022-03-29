@@ -3,12 +3,15 @@ import axios from 'axios';
 import './new.scss';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 
 const NewCategory = ({ setFile }) => {
+  const navigate = useNavigate();
   const [img, setImg] = useState('');
   const [name, setName] = useState('');
   const {
@@ -37,7 +40,7 @@ const NewCategory = ({ setFile }) => {
           },
         }
       );
-      console.log(data);
+      navigate('/category', { replace: true });
     } catch (error) {
       console.log(error);
     }

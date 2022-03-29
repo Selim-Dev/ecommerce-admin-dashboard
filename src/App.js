@@ -10,6 +10,7 @@ import { useContext } from 'react';
 import { DarkModeContext } from './context/darkModeContext';
 import EditeCategory from './components/catogery/editeCategory/EditeCategory';
 import NewCategory from './components/catogery/newCategory/NewCategory';
+import ListContact from './components/contact/contactList/ListContact';
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -44,8 +45,18 @@ function App() {
               />
               <Route
                 path=':categoryId/edit'
-                element={<New input={productInputs} title='Edite Category' />}
+                element={
+                  <New
+                    input={productInputs}
+                    title='Edite Category'
+                    edit='edit'
+                  />
+                }
               />
+            </Route>
+            <Route path='contact'>
+              <Route index element={<ListContact />} />
+              <Route path=':connectId' element={<Single />} />
             </Route>
           </Route>
         </Routes>
