@@ -1,47 +1,50 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './style/dark.scss';
-import Home from './pages/home/Home';
-import List from './pages/list/List';
-import Order from './pages/Order/Order';
-import CreateOrder from './components/orders/create/Create';
-import EditOrder from './components/orders/edit/Edit';
-import ShowOrder from './components/orders/show/Show';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./style/dark.scss";
+import Home from "./pages/home/Home";
+import List from "./pages/list/List";
+import Order from "./pages/Order/Order";
+import CreateOrder from "./components/orders/create/Create";
+import EditOrder from "./components/orders/edit/Edit";
+import ShowOrder from "./components/orders/show/Show";
 // heroes
-import Hero from './pages/Hero/Hero';
-import CreateHero from './components/heroes/create/Create';
-import EditHero from './components/heroes/edit/Edit';
+import Hero from "./pages/Hero/Hero";
+import CreateHero from "./components/heroes/create/Create";
+import EditHero from "./components/heroes/edit/Edit";
 // categories
-import Category from './pages/Category/Category';
-import CreateCategory from './components/categories/create/Create';
-import EditCategory from './components/categories/edit/Edit';
+import Category from "./pages/Category/Category";
+import CreateCategory from "./components/categories/create/Create";
+import EditCategory from "./components/categories/edit/Edit";
 // sub categories
-import SubCategory from './pages/SubCategory/SubCategory';
-import CreateSubCategory from './components/subCategories/create/Create';
-import EditSubCategory from './components/subCategories/edit/Edit';
+import SubCategory from "./pages/SubCategory/SubCategory";
+import CreateSubCategory from "./components/subCategories/create/Create";
+import EditSubCategory from "./components/subCategories/edit/Edit";
 
 // users
-import User from './pages/User/User';
-import CreateUser from './components/users/create/Create';
-import EditUser from './components/users/edit/Edit';
-import ShowUser from './components/users/show/Show';
+import User from "./pages/User/User";
+import CreateUser from "./components/users/create/Create";
+import EditUser from "./components/users/edit/Edit";
+import ShowUser from "./components/users/show/Show";
 // variants
-import Variant from './pages/Variant/Variant';
-import CreateVariant from './components/variants/create/Create';
-import EditVariant from './components/variants/edit/Edit';
+import Variant from "./pages/Variant/Variant";
+import CreateVariant from "./components/variants/create/Create";
+import EditVariant from "./components/variants/edit/Edit";
+// brands
+import Brand from "./pages/Brand/Brand";
+import CreateBrand from "./components/brand/create/Create";
+import EditBrand from "./components/brand/edit/Edit";
 // variants optioons
 
-import VariantsOptions from './pages/VariantOptions/VariantOptions';
-import CreateVariantOptions from './components/variantOptions/create/Create';
-import EditVariantOptions from './components/variantOptions/edit/Edit';
+import VariantsOptions from "./pages/VariantOptions/VariantOptions";
+import CreateVariantOptions from "./components/variantOptions/create/Create";
+import EditVariantOptions from "./components/variantOptions/edit/Edit";
 
-import LogIn from './pages/login/LogIn';
-import { useContext } from 'react';
-import { DarkModeContext } from './context/darkModeContext';
+import { useContext } from "react";
+import { DarkModeContext } from "./context/darkModeContext";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
   return (
-    <div className={darkMode ? 'app dark' : 'app'}>
+    <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
         <Routes>
           <Route path="dashboard">
@@ -80,6 +83,7 @@ function App() {
                 element={<CreateVariant title="Add New variant" />}
               />
             </Route>
+
             <Route path="variantOptions">
               <Route index element={<VariantsOptions />} />
               <Route
@@ -101,6 +105,11 @@ function App() {
                 path="create"
                 element={<CreateHero title="Add New Hero" />}
               />
+            </Route>
+            <Route path="Brands">
+              <Route index element={<Brand />} />
+              <Route path=":brandId/edit" element={<EditBrand />} />
+              <Route path="create" element={<CreateBrand />} />
             </Route>
             {/* Categories */}
             <Route path="Categories">
