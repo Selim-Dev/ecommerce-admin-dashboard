@@ -19,8 +19,8 @@ import axios from 'axios';
 const New = () => {
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
-  const { categoryId } = useParams();
-  const REGISTER_URL = `http://localhost:3000/api/v1/category/${categoryId}`;
+  const { subCategoryId, categoryId } = useParams();
+  const REGISTER_URL = `http://localhost:3000/api/v1/subCategory/${subCategoryId}`;
 
   const [file, setFile] = useState('');
   const {
@@ -47,12 +47,12 @@ const New = () => {
     });
     console.log(response);
     console.log(response?.data);
-    navigate('/dashboard/categories', { replace: true });
+    navigate('/dashboard/subCategories', { replace: true });
   };
   useEffect(() => {
     const hero = async () => {
       const result = await axios.get(
-        `http://localhost:3000/api/v1/category/${categoryId}`
+        `http://localhost:3000/api/v1/subCategory/${subCategoryId}`
       );
       console.log(result);
       if (result?.data?.data?.data) {
@@ -69,7 +69,7 @@ const New = () => {
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>Edit Category</h1>
+          <h1>Edit Sub Category</h1>
         </div>
         <div className="bottom">
           <div className="left">

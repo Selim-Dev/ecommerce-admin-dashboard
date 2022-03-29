@@ -22,6 +22,7 @@ const Datatable = () => {
               id: index,
               name: item.name,
               category: item.category.name,
+              categoryId: item.category._id,
               photo: item.photo,
             };
           })
@@ -56,7 +57,7 @@ const Datatable = () => {
         return (
           <div className="cellAction">
             <Link
-              to={`/dashboard/categories/${params.row._id}/edit`}
+              to={`/dashboard/subCategories/${params.row._id}/category/${params.row.categoryId}/edit`}
               style={{ textDecoration: 'none' }}
             >
               <div className="editButton">Edit</div>
@@ -76,7 +77,7 @@ const Datatable = () => {
     <div className="datatable">
       <div className="datatableTitle">
         Sub Categories
-        <Link to="/dashboard/categories/create" className="link">
+        <Link to="/dashboard/subCategories/create" className="link">
           Add New Sub Category
         </Link>
       </div>
