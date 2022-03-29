@@ -5,6 +5,7 @@ import List from './pages/list/List';
 import Order from './pages/Order/Order';
 import CreateOrder from './components/orders/create/Create';
 import EditOrder from './components/orders/edit/Edit';
+import EditNewProduct from './components/products/edit/Edit';
 import ShowOrder from './components/orders/show/Show';
 // heroes
 import Hero from './pages/Hero/Hero';
@@ -36,7 +37,7 @@ import EditVariantOptions from './components/variantOptions/edit/Edit';
 // products
 import Product from './pages/Product/Product';
 import CreateProduct from './components/products/create/Create';
-import EditProduct from './components/products/edit/Edit';
+// import EditProduct from './components/products/edit/Edit';
 import ShowProduct from './components/products/show/Show';
 // end products
 import LogIn from './pages/login/LogIn';
@@ -62,7 +63,9 @@ function App() {
             <Route path="products">
               <Route index element={<Product />} />
               <Route path=":productId/show" element={<ShowProduct />} />
-              <Route path=":productId/edit" element={<EditProduct />} />
+              {/* <Route path=":productId/edit" element={<EditProduct />} /> */}
+              <Route path=":productId/edit" element={<EditNewProduct />} />
+
               <Route
                 path="create"
                 element={<CreateProduct title="Add New Product" />}

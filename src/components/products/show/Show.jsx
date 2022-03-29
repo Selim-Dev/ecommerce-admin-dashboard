@@ -12,16 +12,14 @@ const Single = () => {
   const { productId } = useParams();
   const [data, setData] = useState([]);
   useEffect(() => {
-    console.log(productId);
     const GetUsers = async () => {
       const result = await axios.get(
         `http://localhost:3000/api/v1/products/${productId}`
       );
-      setData(result?.data?.data?.data);
+      setData(() => result?.data?.data?.data);
     };
     GetUsers();
   }, []);
-  console.log(data);
 
   return (
     <div className="single">
@@ -33,44 +31,80 @@ const Single = () => {
             <div className="editButton">Edite</div>
             <div className="title">Information</div>
             <div className="item">
-              <img src={data.photo} alt="butfile girle" className="itemImg" />
+              <img src={data?.photo} alt="butfile girle" className="itemImg" />
               <div className="details">
-                <h1 className="itemTitle">{data.name}</h1>
+                <h1 className="itemTitle">{data?.name}</h1>
                 <div className="detailItem">
                   <span className="itemKey">Name :</span>
-                  <span className="itemValue">{data.name}</span>
+                  <span className="itemValue">{data?.name}</span>
                 </div>
                 <div className="detailItem">
                   <span className="itemKey">Category:</span>
-                  <span className="itemValue">{data.category?.name}</span>
+                  <span className="itemValue">{data?.category?.name}</span>
                 </div>
-
                 <div className="detailItem">
                   <span className="itemKey">Sub Category:</span>
-                  <span className="itemValue">{data.subCategory?.name}</span>
+                  <span className="itemValue">{data?.subCategory?.name}</span>
                 </div>
-
                 <div className="detailItem">
                   <span className="itemKey">Seller:</span>
-                  <span className="itemValue">{data.seller}</span>
+                  <span className="itemValue">{data?.seller?.name}</span>
                 </div>
 
                 <div className="detailItem">
                   <span className="itemKey">Price:</span>
-                  <span className="itemValue">{data.listPrice}</span>
+                  <span className="itemValue">{data?.listPrice}</span>
                 </div>
 
                 <div className="detailItem">
                   <span className="itemKey">sku:</span>
-                  <span className="itemValue">{data.sku}</span>
+                  <span className="itemValue">{data?.sku}</span>
+                </div>
+                <div className="detailItem">
+                  <span className="itemKey">Description:</span>
+                  <span className="itemValue">{data?.description}</span>
+                </div>
+              </div>
+            </div>
+            {/* <div className="item">
+              <img src={data?.photo} alt="butfile girle" className="itemImg" />
+              <div className="details">
+                <h1 className="itemTitle">{data?.name}</h1>
+                <div className="detailItem">
+                  <span className="itemKey">Name :</span>
+                  <span className="itemValue">{data?.name}</span>
+                </div>
+                <div className="detailItem">
+                  <span className="itemKey">Category:</span>
+                  <span className="itemValue">{data?.category?.name}</span>
+                </div>
+
+                <div className="detailItem">
+                  <span className="itemKey">Sub Category:</span>
+                  <span className="itemValue">{data?.subCategory?.name}</span>
+                </div>
+
+                <div className="detailItem">
+                  <span className="itemKey">Seller:</span>
+                  <span className="itemValue">{data?.seller}</span>
+                </div>
+
+                <div className="detailItem">
+                  <span className="itemKey">Price:</span>
+                  <span className="itemValue">{data?.listPrice}</span>
+                </div>
+
+                <div className="detailItem">
+                  <span className="itemKey">sku:</span>
+                  <span className="itemValue">{data?.sku}</span>
                 </div>
 
                 <div className="detailItem">
                   <span className="itemKey">Description:</span>
-                  <span className="itemValue">{data.description}</span>
+                  <span className="itemValue">{data?.description}</span>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
