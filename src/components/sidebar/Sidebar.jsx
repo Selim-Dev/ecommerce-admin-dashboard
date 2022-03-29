@@ -1,3 +1,4 @@
+
 import React, { useContext } from 'react';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
@@ -15,12 +16,13 @@ import './Sidebar.scss';
 import { Link } from 'react-router-dom';
 import { DarkModeContext } from '../../context/darkModeContext';
 import ImageIcon from '@mui/icons-material/Image';
+
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
   return (
     <div className="sidebar">
       <div className="top">
-        <Link to="/" style={{ textDecoration: 'none' }}>
+        <Link to="/" style={{ textDecoration: "none" }}>
           <span className="logo">ninja</span>
         </Link>
       </div>
@@ -28,20 +30,25 @@ const Sidebar = () => {
       <div className="center">
         <ul>
           <p className="title">MAIN</p>
+
           <Link to="/dashboard" style={{ textDecoration: 'none' }}>
+
             <li>
               <DashboardIcon className="icon" />
               <span>Dashboard</span>
             </li>
           </Link>
 
+
           {/* <p className="title">LISTS</p> */}
           <Link to="/dashboard/users" style={{ textDecoration: 'none' }}>
+
             <li>
               <PersonOutlineIcon className="icon" />
               <span>Users</span>
             </li>
           </Link>
+
           <Link to="/dashboard/heroes" style={{ textDecoration: 'none' }}>
             <li>
               <ImageIcon className="icon" />
@@ -64,15 +71,30 @@ const Sidebar = () => {
             </li>
           </Link>
           <Link to="/products" style={{ textDecoration: 'none' }}>
+
             <li>
               <StoreIcon className="icon" />
               <span>Products</span>
             </li>
           </Link>
+
           <Link to="/dashboard/orders" style={{ textDecoration: 'none' }}>
+
             <li>
               <CreditCardIcon className="icon" />
               <span>Orders</span>
+            </li>
+          </Link>
+          <Link to="/variants" style={{ textDecoration: "none" }}>
+            <li>
+              <CreditCardIcon className="icon" />
+              <span>Variants</span>
+            </li>
+          </Link>
+          <Link to="/variantOptions" style={{ textDecoration: "none" }}>
+            <li>
+              <CreditCardIcon className="icon" />
+              <span>VariantOptions</span>
             </li>
           </Link>
 
@@ -115,11 +137,11 @@ const Sidebar = () => {
       </div>
       {/* <div className="bottom">
         <div
-          onClick={() => dispatch({ type: 'DARK' })}
+          onClick={() => dispatch({ type: "DARK" })}
           className="colorOption"
         ></div>
         <div
-          onClick={() => dispatch({ type: 'DARK' })}
+          onClick={() => dispatch({ type: "DARK" })}
           className="colorOption"
         ></div>
       </div> */}

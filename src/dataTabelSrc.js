@@ -1,3 +1,12 @@
+export const variantColumns = [
+  { field: "id", headerName: "ID", width: 100 },
+  { field: "name", headerName: "Name", width: 300 },
+  { field: "variantName", headerName: "variantName", width: 300 },
+];
+export const variantOptionColumns = [
+  { field: "id", headerName: "ID", width: 400 },
+  { field: "name", headerName: "Name", width: 400 },
+];
 export const userColumns = [
   { field: 'id', headerName: 'ID', width: 40 },
   {

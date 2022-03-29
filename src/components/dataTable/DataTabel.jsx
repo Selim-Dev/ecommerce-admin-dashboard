@@ -32,10 +32,17 @@ const Datatable = () => {
     GetUsers();
   }, []);
 
+
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:3000/api/v1/users/${id}`).then(() => {
-      setData(data.filter((item) => item.id !== id));
-    });
+    await axios
+      .delete(`http://localhost:3000/api/v1/users/${id}`)
+      .then((res) => {
+        setData(
+          data.filter((item) => {
+            return item._id !== id;
+          })
+        );
+      });
   };
 
   const actionColumn = [

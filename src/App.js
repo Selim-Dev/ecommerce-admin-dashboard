@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './style/dark.scss';
 import Home from './pages/home/Home';
@@ -19,17 +20,25 @@ import SubCategory from './pages/SubCategory/SubCategory';
 import CreateSubCategory from './components/subCategories/create/Create';
 import EditSubCategory from './components/subCategories/edit/Edit';
 
-import LogIn from './pages/login/LogIn';
-import New from './pages/new/New';
-import Single from './pages/single/Single';
-import { productInputs, userInputs, orderInputs } from './FormSrc';
-import { useContext } from 'react';
-import { DarkModeContext } from './context/darkModeContext';
+
+import Variant from "./pages/Variant/Variant";
+import CreateVariant from "./components/variants/create/Create";
+import EditVariant from "./components/variants/edit/Edit";
+
+import VariantsOptions from "./pages/VariantOptions/VariantOptions";
+import CreateVariantOptions from "./components/variantOptions/create/Create";
+import EditVariantOptions from "./components/variantOptions/edit/Edit";
+
+import LogIn from "./pages/login/LogIn";
+import New from "./pages/new/New";
+import Single from "./pages/single/Single";
+import { useContext } from "react";
+import { DarkModeContext } from "./context/darkModeContext";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
   return (
-    <div className={darkMode ? 'app dark' : 'app'}>
+    <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
         <Routes>
           <Route path="dashboard">
@@ -38,18 +47,12 @@ function App() {
             <Route path="users">
               <Route index element={<List />} />
               <Route path=":userId" element={<Single />} />
-              <Route
-                path="new"
-                element={<New input={userInputs} title="Add New User" />}
-              />
+              <Route path="new" element={<New title="Add New User" />} />
             </Route>
             <Route path="products">
               <Route index element={<List />} />
               <Route path=":productId" element={<Single />} />
-              <Route
-                path="new"
-                element={<New input={productInputs} title="Add New Product" />}
-              />
+              <Route path="new" element={<New title="Add New Product" />} />
             </Route>
             {/* Orders */}
             <Route path="orders">
@@ -58,8 +61,27 @@ function App() {
               <Route path=":orderId/edit" element={<EditOrder />} />
               <Route
                 path="create"
+                element={<CreateOrder title="Add New Order" />}
+              />
+            </Route>
+            <Route path="variants">
+              <Route index element={<Variant />} />
+              <Route path=":variantId/edit" element={<EditVariant />} />
+              <Route
+                path="create"
+                element={<CreateVariant title="Add New variant" />}
+              />
+            </Route>
+            <Route path="variantOptions">
+              <Route index element={<VariantsOptions />} />
+              <Route
+                path="variant/:variantId/:variantOptionId/edit"
+                element={<EditVariantOptions />}
+              />
+              <Route
+                path="create"
                 element={
-                  <CreateOrder input={orderInputs} title="Add New Order" />
+                  <CreateVariantOptions title="Add New variant option" />
                 }
               />
             </Route>
