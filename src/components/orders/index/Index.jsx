@@ -30,24 +30,32 @@ const style = {
 };
 
 const Datatable = () => {
+  const token = localStorage.getItem('token');
+
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => {
+  const [orderId, setOrderId] = React.useState(0);
+  const handleOpen = (id) => {
     setOpen(true);
+    console.log(id);
+    setOrderId(() => id);
   };
   const handleClose = () => {
     setOpen(false);
   };
-  const onSubmit = async (data) => {
-    console.log(data);
+  const onSubmit = async (orderStatus) => {
+    console.log('order status', orderStatus);
+    console.log('order id', orderId);
     // const formData = new FormData();
-    // formData.append('photo', data.photo[0]);
-    // formData.append('name', data.name);
-    // formData.append('category', data.category);
-    // const response = await axios.post(REGISTER_URL, formData, {
-    //   headers: {
-    //     Authorization: `Bearer ${token}`,
-    //   },
-    // });
+    const response = await axios.patch(
+      `http://localhost:3000/api/v1/order/${orderId}`,
+      orderStatus,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    handleClose();
     // console.log(response);
     // console.log(response?.data);
     // navigate('/dashboard/subCategories', { replace: true });
@@ -108,7 +116,10 @@ const Datatable = () => {
             >
               <div className="viewButton">View</div>
             </Link>
-            <div onClick={handleOpen} className="deleteButton">
+            <div
+              onClick={() => handleOpen(params.row._id)}
+              className="deleteButton"
+            >
               Edit
             </div>
             {/* <Link
@@ -141,39 +152,39 @@ const Datatable = () => {
       >
         <Box sx={{ ...style, width: 400, padding: '50px' }}>
           <h3 id="child-modal-title">Change Status</h3>
-          <p id="child-modal-description" style={{ margin: '14px' }}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Category</InputLabel>
-                <Select
-                  labelId="demo-simple-select-standard-label"
-                  id="demo-simple-select-standard"
-                  label="Category"
-                  {...register('status', { required: true })}
-                  error={errors.status ? true : false}
-                >
-                  <MenuItem value="pending" selected>
-                    Pending
-                  </MenuItem>
-                  <MenuItem value="on_the_way">On the way</MenuItem>
-                  <MenuItem value="delivered">Delivered</MenuItem>
-                  <MenuItem value="canceled">Canceled</MenuItem>
-                  <MenuItem value="retrieved">Retrieved</MenuItem>
-                </Select>
-                {errors.category ? (
-                  <p style={{ color: 'red' }}>'category is required'</p>
-                ) : (
-                  ''
-                )}
-              </FormControl>
-            </form>
-          </p>
-          <Button variant="contained" color="success">
-            Send
-          </Button>
-          <Button onClick={handleClose} variant="outlined" color="error">
-            Close
-          </Button>
+          {/* <p id="child-modal-description" style={{ margin: '14px' }}> */}
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <FormControl style={{ margin: '10px' }} fullWidth>
+              <InputLabel id="demo-simple-select-label">Category</InputLabel>
+              <Select
+                labelId="demo-simple-select-standard-label"
+                id="demo-simple-select-standard"
+                label="Category"
+                {...register('status', { required: true })}
+                error={errors.status ? true : false}
+              >
+                <MenuItem value="pending" selected>
+                  Pending
+                </MenuItem>
+                <MenuItem value="on_the_way">On the way</MenuItem>
+                <MenuItem value="delivered">Delivered</MenuItem>
+                <MenuItem value="canceled">Canceled</MenuItem>
+                <MenuItem value="retrieved">Retrieved</MenuItem>
+              </Select>
+              {errors.category ? (
+                <p style={{ color: 'red' }}>'category is required'</p>
+              ) : (
+                ''
+              )}
+            </FormControl>
+            <Button type="submit" variant="contained" color="success">
+              Send
+            </Button>
+            <Button onClick={handleClose} variant="outlined" color="error">
+              Close
+            </Button>
+          </form>
+          {/* </p> */}
         </Box>
       </Modal>
       {/* <div className="datatableTitle">
