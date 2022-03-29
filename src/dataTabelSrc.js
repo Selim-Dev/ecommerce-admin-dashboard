@@ -162,3 +162,60 @@ export const subCategoryColumns = [
     },
   },
 ];
+
+export const productColumns = [
+  { field: 'id', headerName: 'ID', width: 40 },
+  {
+    field: 'name',
+    headerName: 'Product Name',
+    width: 160,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+          <img className="cellImg" src={params.row.photo} alt="" />
+          {params.row.name}
+        </div>
+      );
+    },
+  },
+  {
+    field: 'listPrice',
+    headerName: 'Price',
+    width: 130,
+  },
+
+  {
+    field: 'category',
+    headerName: ' Category',
+    width: 180,
+  },
+  {
+    field: 'subCategory',
+    headerName: 'Sub Category',
+    width: 170,
+  },
+  {
+    field: 'ratingsAverage',
+    headerName: 'Ratings',
+    width: 140,
+  },
+
+  // {
+  //   field: "description",
+  //   headerName: "Description",
+  //   width: 100,
+  //   flex: 1,
+  // },
+  // {
+  //   field: "ratingsAverage",
+  //   headerName: "Ratings",
+  //   width: 100,
+  //   renderCell: (params) => {
+  //     return (
+  //       <div className={`cellWithStatus ${params.row.status}`}>
+  //         {params.row.status}
+  //       </div>
+  //     );
+  //   },
+  // },
+];

@@ -49,7 +49,7 @@ const New = ({ title, input }) => {
     <div className="new">
       <Sidebar />
       <div className="newContainer">
-        <Navbar />
+        {/* <Navbar /> */}
         <div className="top">
           <h1>{title}</h1>
         </div>
