@@ -20,8 +20,8 @@ const Datatable = () => {
             listPrice: item.listPrice,
             category: item?.category?.name,
             subCategory: item?.subCategory?.name,
-            // city: item.address.city,
-            // country: item.address.country,
+            description: item.description,
+            ratingsAverage: item.ratingsAverage,
             // role: item.role,
             // street: item.address.street,
             // zip: item.address.zip,
@@ -41,7 +41,7 @@ const Datatable = () => {
       setData(data.filter((item) => item.id !== id));
     });
   };
-
+// 
   const actionColumn = [
     {
       field: 'action',
@@ -56,6 +56,14 @@ const Datatable = () => {
             >
               <div className="viewButton">View</div>
             </Link>
+            
+            <Link
+              to={`/products/${params.row._id}/edit`}
+              style={{ textDecoration: 'none' }}
+            >
+              <div className="viewButton"> Edit </div>
+            </Link>
+
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row._id)}

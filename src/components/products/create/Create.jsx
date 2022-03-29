@@ -68,7 +68,7 @@ const New = ({ title, input }) => {
     formData.append('album', data.album);
     formData.append('name', data.name);
     // formData.append('colors', data.colors);
-    // formData.append('sizes', data.sizes);
+    // formData.append('sizes', data.sizes);  
     // formData.append('brand', data.brand);
     formData.append('description', data.description);
     formData.append('seller', data.seller);
@@ -96,43 +96,7 @@ const New = ({ title, input }) => {
     // console.log(subCategories?.data?.data?.data.subCategories);
     setSubCategories(subCategories?.data?.data?.data.subCategories);
   };
-  // eslint-disable-next-line no-undef
-  //   {
-  //     "album": [
-  //         "aa",
-  //         "bb",
-  //         "cc"
-  //     ],
-  //     "album_id": [],
-  //     "ratingsAverage": 5,
-  //     "ratingsQuantitiy": 1600,
-  //     "colors": [],
-  //     "sizes": [],
-  //     "brand": [],
-  //     "is_featured": false,
-  //     "published": false,
-  //     "_id": "623e1a7359b9db48543029c1",
-  //     "name": "Camera x10v",
-  //     "photo": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHxlbnwwfHwwfHw%3D&w=1000&q=80",
-  //     "description": "this is the best phone",
-  //     "seller": null,
-  //     "category": {
-  //         "subCategories": [
-  //             "6239fe0a5a992948b04f0b12",
-  //             "623ffa0195192f15dc75bea5",
-  //             "624004b8062e4b46c0d5a32b"
-  //         ],
-  //         "_id": "623a57531cb582293446ed39",
-  //         "name": "electronics",
-  //         "photo": "nvhv.png",
-  //         "__v": 0
-  //     },
-  //     "subCategory": null,
-  //     "salePrice": 6000,
-  //     "listPrice": 6100,
-  //     "sku": "122333452",
-  //     "stock": 3
-  // },
+  
   return (
     <div className="new">
       <Sidebar />

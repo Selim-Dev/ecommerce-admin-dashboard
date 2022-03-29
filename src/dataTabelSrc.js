@@ -1,3 +1,4 @@
+
 export const userColumns = [
   { field: "id", headerName: "ID", width: 40 },
   {
@@ -16,54 +17,43 @@ export const userColumns = [
   {
     field: "listPrice",
     headerName: "Price",
-    width: 100,
+    width: 130,
   },
 
   {
     field: "category.name",
     headerName: " Category",
-    width: 120,
+    width: 180,
   },
   {
     field: "subvaterynsme",
     headerName: "Sub Category",
-    width: 130,
+    width: 170,
   },
   {
     field: "ratingsAverage",
     headerName: "Ratings",
-    width: 100,
+    width: 140,
   },
-  {
-    field: "city",
-    headerName: "City",
-    flex: 1,
-    width: 100,
-  },
-  {
-    field: "street",
-    headerName: "Street",
-    width: 100,
-    flex: 1,
-  },
-  {
-    field: "zip",
-    headerName: "Zip Code",
-    width: 100,
-    flex: 1,
-  },
-  {
-    field: "status",
-    headerName: "Status",
-    width: 100,
-    renderCell: (params) => {
-      return (
-        <div className={`cellWithStatus ${params.row.status}`}>
-          {params.row.status}
-        </div>
-      );
-    },
-  },
+ 
+  // {
+  //   field: "description",
+  //   headerName: "Description",
+  //   width: 100,
+  //   flex: 1,
+  // },
+  // {
+  //   field: "ratingsAverage",
+  //   headerName: "Ratings",
+  //   width: 100,
+  //   renderCell: (params) => {
+  //     return (
+  //       <div className={`cellWithStatus ${params.row.status}`}>
+  //         {params.row.status}
+  //       </div>
+  //     );
+  //   },
+  // },
 ];
 
 
