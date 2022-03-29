@@ -130,10 +130,12 @@ const Sidebar = () => {
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>
           </li> */}
-          <li>
-            <SettingsApplicationsIcon className="icon" />
-            <span>Settings</span>
-          </li>
+          <Link to="/dashboard/Settings" style={{ textDecoration: "none" }}>
+            <li>
+              <EarbudsIcon className="icon" />
+              <span>Settings</span>
+            </li>
+          </Link>
           <li>
             <ExitToAppIcon className="icon" />
             <span>Logout</span>

@@ -33,6 +33,8 @@ import Brand from "./pages/Brand/Brand";
 import CreateBrand from "./components/brand/create/Create";
 import EditBrand from "./components/brand/edit/Edit";
 // variants optioons
+// Settings
+import Setting from "./pages/Setting/Setting";
 
 import VariantsOptions from "./pages/VariantOptions/VariantOptions";
 import CreateVariantOptions from "./components/variantOptions/create/Create";
@@ -110,6 +112,9 @@ function App() {
               <Route index element={<Brand />} />
               <Route path=":brandId/edit" element={<EditBrand />} />
               <Route path="create" element={<CreateBrand />} />
+            </Route>
+            <Route path="Settings">
+              <Route index element={<Setting />} />
             </Route>
             {/* Categories */}
             <Route path="Categories">
