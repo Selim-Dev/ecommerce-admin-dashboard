@@ -8,7 +8,7 @@ export const variantOptionColumns = [
   { field: 'name', headerName: 'Name', width: 400 },
 ];
 export const userColumns = [
-  { field: 'id', headerName: 'ID', width: 40 },
+  { field: 'id', headerName: 'ID', width: 20 },
   {
     field: 'name',
     headerName: 'Photo&UserName',
@@ -41,37 +41,31 @@ export const userColumns = [
   {
     field: 'country',
     headerName: 'Country',
-    width: 100,
+    width: 80,
   },
   {
     field: 'city',
     headerName: 'City',
     flex: 1,
-    width: 100,
+    width: 80,
   },
   {
     field: 'street',
     headerName: 'Street',
-    width: 100,
+    width: 80,
     flex: 1,
   },
   {
     field: 'zip',
     headerName: 'Zip Code',
-    width: 100,
+    width: 60,
     flex: 1,
   },
   {
     field: 'status',
-    headerName: 'Status',
-    width: 100,
-    renderCell: (params) => {
-      return (
-        <div className={`cellWithStatus ${params.row.status}`}>
-          {params.row.status}
-        </div>
-      );
-    },
+    headerName: 'Baned',
+    width: 40,
+    flex: 1,
   },
 ];
 

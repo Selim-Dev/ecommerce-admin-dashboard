@@ -7,8 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const VarianOptiont_URL = 'http://localhost:3000/api/v1/variantOption';
-const token =
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDI0NDNiZDNkODVjM2Y4MGM0MThhMSIsImlhdCI6MTY0ODUxMDAxMSwiZXhwIjoxNjU2Mjg2MDExfQ.qnEsXaehGOsZXm3IUw50M7dI14zpj3Z5FsARXt4-RyA';
+const token = localStorage.getItem('token');
 
 const New = ({ title, input }) => {
   const [data, setData] = useState([]);
@@ -39,9 +38,10 @@ const New = ({ title, input }) => {
     GetUsers();
   }, []);
   const onSubmit = async (data) => {
+    console.log(data);
     const response = await axios.post(VarianOptiont_URL, data, {
       headers: {
-        Authorization: token,
+        Authorization: `Bearer ${token}`,
       },
     });
     console.log(response);
@@ -67,7 +67,9 @@ const New = ({ title, input }) => {
               </div>
               <select {...register('variant', { required: true })}>
                 {data?.map((item) => (
-                  <option value={item._id}>{item.name}</option>
+                  <option key={item._id} value={item._id}>
+                    {item.name}
+                  </option>
                 ))}
               </select>
               <div className="formInput">

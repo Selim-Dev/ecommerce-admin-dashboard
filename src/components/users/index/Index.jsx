@@ -1,15 +1,15 @@
-import "./Index.scss";
-import { DataGrid } from "@mui/x-data-grid";
-import { userColumns } from "../../../dataTabelSrc";
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import './Index.scss';
+import { DataGrid } from '@mui/x-data-grid';
+import { userColumns } from '../../../dataTabelSrc';
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Datatable = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     const GetUsers = async () => {
-      const result = await axios.get("http://localhost:3000/api/v1/users");
+      const result = await axios.get('http://localhost:3000/api/v1/users');
       setData(
         result?.data?.data?.data &&
           result?.data?.data?.data.map((item, index) => {
@@ -24,13 +24,23 @@ const Datatable = () => {
               role: item.role,
               street: item.address.street,
               zip: item.address.zip,
+              status: item.isBanned,
               _id: item._id,
             };
           })
       );
     };
     GetUsers();
-  }, [data]);
+  }, []);
+  const handleStatus = async (id, status) => {
+    await axios
+      .patch(`http://localhost:3000/api/v1/users/${id}`, {
+        isBanned: !status,
+      })
+      .then((res) => {
+        setData(data);
+      });
+  };
 
   const handleDelete = async (id) => {
     await axios
@@ -46,18 +56,24 @@ const Datatable = () => {
 
   const actionColumn = [
     {
-      field: "action",
-      headerName: "Action",
+      field: 'action',
+      headerName: 'Action',
       width: 200,
       renderCell: (params) => {
         return (
           <div className="cellAction">
             <Link
-              to={`/users/${params.row._id}`}
-              style={{ textDecoration: "none" }}
+              to={`/dashboard/users/${params.row._id}`}
+              style={{ textDecoration: 'none' }}
             >
               <div className="viewButton">View</div>
             </Link>
+            <div
+              className="deleteButton"
+              onClick={() => handleStatus(params.row._id, params.row.status)}
+            >
+              Ban
+            </div>
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row._id)}
@@ -72,9 +88,9 @@ const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Orders
-        <Link to="/orders/create" className="link">
-          Add New Orders
+        Add New User
+        <Link to="/dashboard/users/create" className="link">
+          Add New User
         </Link>
       </div>
       <DataGrid

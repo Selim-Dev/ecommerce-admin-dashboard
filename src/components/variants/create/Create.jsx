@@ -20,7 +20,7 @@ const New = ({ title, input }) => {
     console.log(data);
     const response = await axios.post(Variant_URL, data, {
       headers: {
-        Authorization: token,
+        Authorization: `Bearer ${token}`,
       },
     });
     console.log(response);

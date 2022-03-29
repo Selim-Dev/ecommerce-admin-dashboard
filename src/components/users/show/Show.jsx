@@ -1,11 +1,11 @@
-import "./Show.scss";
-import Sidebar from "../../sidebar/Sidebar";
-import Navbar from "../../navbar/Navbar";
-import Chart from "../../chart/Chart";
-import List from "../../list/List";
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
+import './Show.scss';
+import Sidebar from '../../sidebar/Sidebar';
+import Navbar from '../../navbar/Navbar';
+import Chart from '../../chart/Chart';
+import List from '../../list/List';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const Single = () => {
   const { userId } = useParams();
@@ -45,9 +45,9 @@ const Single = () => {
                 <div className="detailItem">
                   <span className="itemKey">Adress:</span>
                   <span className="itemValue">
-                    {data?.address?.country} {""}
-                    {data?.address?.city} {""}
-                    {data?.address?.street} {""}
+                    {data?.address?.country} {''}
+                    {data?.address?.city} {''}
+                    {data?.address?.street} {''}
                   </span>
                 </div>
                 <div className="detailItem">
@@ -65,10 +65,10 @@ const Single = () => {
             <Chart aspect={3 / 1} title="User Spending ( Last 6 Months)" />
           </div>
         </div>
-        <div className="bottom">
+        {/* <div className="bottom">
           <h1 className="title">Last Transactions</h1>
           <List />
-        </div>
+        </div> */}
       </div>
     </div>
   );

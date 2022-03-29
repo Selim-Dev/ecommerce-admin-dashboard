@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './style/dark.scss';
 import Home from './pages/home/Home';
@@ -20,40 +19,40 @@ import SubCategory from './pages/SubCategory/SubCategory';
 import CreateSubCategory from './components/subCategories/create/Create';
 import EditSubCategory from './components/subCategories/edit/Edit';
 
+// users
+import User from './pages/User/User';
+import CreateUser from './components/users/create/Create';
+import EditUser from './components/users/edit/Edit';
+import ShowUser from './components/users/show/Show';
+// variants
+import Variant from './pages/Variant/Variant';
+import CreateVariant from './components/variants/create/Create';
+import EditVariant from './components/variants/edit/Edit';
+// variants optioons
 
-import Variant from "./pages/Variant/Variant";
-import CreateVariant from "./components/variants/create/Create";
-import EditVariant from "./components/variants/edit/Edit";
+import VariantsOptions from './pages/VariantOptions/VariantOptions';
+import CreateVariantOptions from './components/variantOptions/create/Create';
+import EditVariantOptions from './components/variantOptions/edit/Edit';
 
-import VariantsOptions from "./pages/VariantOptions/VariantOptions";
-import CreateVariantOptions from "./components/variantOptions/create/Create";
-import EditVariantOptions from "./components/variantOptions/edit/Edit";
-
-import LogIn from "./pages/login/LogIn";
-import New from "./pages/new/New";
-import Single from "./pages/single/Single";
-import { useContext } from "react";
-import { DarkModeContext } from "./context/darkModeContext";
+import LogIn from './pages/login/LogIn';
+import { useContext } from 'react';
+import { DarkModeContext } from './context/darkModeContext';
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
   return (
-    <div className={darkMode ? "app dark" : "app"}>
+    <div className={darkMode ? 'app dark' : 'app'}>
       <BrowserRouter>
         <Routes>
           <Route path="dashboard">
             <Route index element={<Home />} />
             {/* <Route path="login" element={<LogIn />} /> */}
-            <Route path="users">
-              <Route index element={<List />} />
-              <Route path=":userId" element={<Single />} />
-              <Route path="new" element={<New title="Add New User" />} />
-            </Route>
-            <Route path="products">
+
+            {/* <Route path="products">
               <Route index element={<List />} />
               <Route path=":productId" element={<Single />} />
               <Route path="new" element={<New title="Add New Product" />} />
-            </Route>
+            </Route> */}
             {/* Orders */}
             <Route path="orders">
               <Route index element={<Order />} />
@@ -63,6 +62,15 @@ function App() {
                 path="create"
                 element={<CreateOrder title="Add New Order" />}
               />
+            </Route>
+            <Route path="users">
+              <Route index element={<User />} />
+              <Route path=":userId" element={<ShowUser />} />
+              <Route
+                path="create"
+                element={<CreateUser title="Add New User" />}
+              />
+              <Route path=":userId/edit" element={<EditUser />} />
             </Route>
             <Route path="variants">
               <Route index element={<Variant />} />

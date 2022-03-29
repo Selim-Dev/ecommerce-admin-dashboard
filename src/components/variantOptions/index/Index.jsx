@@ -33,7 +33,7 @@ const Datatable = () => {
     await axios
       .delete(`http://localhost:3000/api/v1/variantOption/${id}`, {
         headers: {
-          Authorization: token,
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((res) => {

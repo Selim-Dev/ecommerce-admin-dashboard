@@ -36,7 +36,7 @@ const New = ({ title, input }) => {
       data,
       {
         headers: {
-          Authorization: token,
+          Authorization: `Bearer ${token}`,
         },
       }
     );

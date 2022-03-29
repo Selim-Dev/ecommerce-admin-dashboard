@@ -21,7 +21,7 @@ const New = ({ title, input }) => {
     const response = await axios.post(REGISTER_URL, data);
     console.log(response);
     console.log(response?.data);
-    navigate('/users', { replace: true });
+    navigate('/dashboard/users', { replace: true });
   };
 
   return (
