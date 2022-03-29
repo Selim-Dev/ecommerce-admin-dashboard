@@ -19,8 +19,7 @@ const REGISTER_URL = 'http://localhost:3000/api/v1/category';
 const New = () => {
   const navigate = useNavigate();
   const [file, setFile] = useState('');
-  const token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDFlZTFjM2M0ZWMwNmFkODgyNGRhYyIsImlhdCI6MTY0ODQ4Nzk2NywiZXhwIjoxNjU2MjYzOTY3fQ.JyL1JxCOGYyxRUwDPqO3CdxOoaMCaVTqtZaZXlfarVE';
+  const token = localStorage.getItem('token');
   const {
     register,
     handleSubmit,

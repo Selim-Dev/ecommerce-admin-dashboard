@@ -1,11 +1,11 @@
 export const variantColumns = [
-  { field: "id", headerName: "ID", width: 100 },
-  { field: "name", headerName: "Name", width: 300 },
-  { field: "variantName", headerName: "variantName", width: 300 },
+  { field: 'id', headerName: 'ID', width: 100 },
+  { field: 'name', headerName: 'Name', width: 300 },
+  { field: 'variantName', headerName: 'variantName', width: 300 },
 ];
 export const variantOptionColumns = [
-  { field: "id", headerName: "ID", width: 400 },
-  { field: "name", headerName: "Name", width: 400 },
+  { field: 'id', headerName: 'ID', width: 400 },
+  { field: 'name', headerName: 'Name', width: 400 },
 ];
 export const userColumns = [
   { field: 'id', headerName: 'ID', width: 40 },
@@ -75,6 +75,34 @@ export const userColumns = [
   },
 ];
 
+export const orderColumns = [
+  { field: 'id', headerName: 'ID', width: 50 },
+  {
+    field: 'user',
+    headerName: 'User',
+    width: 190,
+  },
+  {
+    field: 'country',
+    headerName: 'Country',
+    width: 190,
+  },
+  {
+    field: 'city',
+    headerName: 'City',
+    width: 190,
+  },
+  {
+    field: 'street',
+    headerName: 'Street',
+    width: 190,
+  },
+  {
+    field: 'totalPrice',
+    headerName: 'Total Price',
+    width: 190,
+  },
+];
 export const heroColumns = [
   { field: 'id', headerName: 'ID', width: 200 },
   {

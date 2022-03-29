@@ -6,8 +6,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Datatable = () => {
-  const token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDFlZTFjM2M0ZWMwNmFkODgyNGRhYyIsImlhdCI6MTY0ODQ4Nzk2NywiZXhwIjoxNjU2MjYzOTY3fQ.JyL1JxCOGYyxRUwDPqO3CdxOoaMCaVTqtZaZXlfarVE';
+  const token = localStorage.getItem('token');
   const [data, setData] = useState([]);
   useEffect(() => {
     const GetUsers = async () => {

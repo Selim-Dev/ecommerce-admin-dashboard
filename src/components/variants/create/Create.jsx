@@ -1,14 +1,13 @@
-import { React, useState } from "react";
-import Sidebar from "../../sidebar/Sidebar";
-import Navbar from "../../navbar/Navbar";
-import "./Create.scss";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { React, useState } from 'react';
+import Sidebar from '../../sidebar/Sidebar';
+import Navbar from '../../navbar/Navbar';
+import './Create.scss';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-const Variant_URL = "http://localhost:3000/api/v1/variant";
-const token =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDI0NDNiZDNkODVjM2Y4MGM0MThhMSIsImlhdCI6MTY0ODUxMDAxMSwiZXhwIjoxNjU2Mjg2MDExfQ.qnEsXaehGOsZXm3IUw50M7dI14zpj3Z5FsARXt4-RyA";
+const Variant_URL = 'http://localhost:3000/api/v1/variant';
+const token = localStorage.getItem('token');
 
 const New = ({ title, input }) => {
   const navigate = useNavigate();
@@ -26,7 +25,7 @@ const New = ({ title, input }) => {
     });
     console.log(response);
     console.log(response?.data);
-    navigate("/variants", { replace: true });
+    navigate('/dashboard/variants', { replace: true });
   };
 
   return (
@@ -42,7 +41,7 @@ const New = ({ title, input }) => {
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="formInput">
                 <label>Variant Name</label>
-                <input {...register("name", { required: true })} />
+                <input {...register('name', { required: true })} />
                 {errors.name && <span>Variant Name is required</span>}
               </div>
               <div className="formInput">

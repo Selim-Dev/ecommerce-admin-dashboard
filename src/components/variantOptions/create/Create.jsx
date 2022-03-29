@@ -1,14 +1,14 @@
-import { React, useState, useEffect } from "react";
-import Sidebar from "../../sidebar/Sidebar";
-import Navbar from "../../navbar/Navbar";
-import "./Create.scss";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { React, useState, useEffect } from 'react';
+import Sidebar from '../../sidebar/Sidebar';
+import Navbar from '../../navbar/Navbar';
+import './Create.scss';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-const VarianOptiont_URL = "http://localhost:3000/api/v1/variantOption";
+const VarianOptiont_URL = 'http://localhost:3000/api/v1/variantOption';
 const token =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDI0NDNiZDNkODVjM2Y4MGM0MThhMSIsImlhdCI6MTY0ODUxMDAxMSwiZXhwIjoxNjU2Mjg2MDExfQ.qnEsXaehGOsZXm3IUw50M7dI14zpj3Z5FsARXt4-RyA";
+  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDI0NDNiZDNkODVjM2Y4MGM0MThhMSIsImlhdCI6MTY0ODUxMDAxMSwiZXhwIjoxNjU2Mjg2MDExfQ.qnEsXaehGOsZXm3IUw50M7dI14zpj3Z5FsARXt4-RyA';
 
 const New = ({ title, input }) => {
   const [data, setData] = useState([]);
@@ -20,7 +20,7 @@ const New = ({ title, input }) => {
   } = useForm();
   useEffect(() => {
     const GetUsers = async () => {
-      const result = await axios.get("http://localhost:3000/api/v1/variant", {
+      const result = await axios.get('http://localhost:3000/api/v1/variant', {
         headers: {
           Authorization: token,
         },
@@ -46,7 +46,7 @@ const New = ({ title, input }) => {
     });
     console.log(response);
     console.log(response?.data);
-    navigate("/variantOptions", { replace: true });
+    navigate('/dashboard/variantOptions', { replace: true });
   };
 
   return (
@@ -62,10 +62,10 @@ const New = ({ title, input }) => {
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="formInput">
                 <label>VariantOption Name</label>
-                <input {...register("name", { required: true })} />
+                <input {...register('name', { required: true })} />
                 {errors.name && <span>VarianOptiont Name is required</span>}
               </div>
-              <select {...register("variant", { required: true })}>
+              <select {...register('variant', { required: true })}>
                 {data?.map((item) => (
                   <option value={item._id}>{item.name}</option>
                 ))}

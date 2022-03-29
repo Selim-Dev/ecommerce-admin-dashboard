@@ -1,4 +1,3 @@
-
 import React, { useContext } from 'react';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
@@ -22,7 +21,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="top">
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/" style={{ textDecoration: 'none' }}>
           <span className="logo">ninja</span>
         </Link>
       </div>
@@ -32,17 +31,14 @@ const Sidebar = () => {
           <p className="title">MAIN</p>
 
           <Link to="/dashboard" style={{ textDecoration: 'none' }}>
-
             <li>
               <DashboardIcon className="icon" />
               <span>Dashboard</span>
             </li>
           </Link>
 
-
           {/* <p className="title">LISTS</p> */}
           <Link to="/dashboard/users" style={{ textDecoration: 'none' }}>
-
             <li>
               <PersonOutlineIcon className="icon" />
               <span>Users</span>
@@ -71,7 +67,6 @@ const Sidebar = () => {
             </li>
           </Link>
           <Link to="/products" style={{ textDecoration: 'none' }}>
-
             <li>
               <StoreIcon className="icon" />
               <span>Products</span>
@@ -79,29 +74,27 @@ const Sidebar = () => {
           </Link>
 
           <Link to="/dashboard/orders" style={{ textDecoration: 'none' }}>
-
             <li>
               <CreditCardIcon className="icon" />
               <span>Orders</span>
             </li>
           </Link>
-          <Link to="/variants" style={{ textDecoration: "none" }}>
+          <Link to="/dashboard/variants" style={{ textDecoration: 'none' }}>
             <li>
               <CreditCardIcon className="icon" />
               <span>Variants</span>
             </li>
           </Link>
-          <Link to="/variantOptions" style={{ textDecoration: "none" }}>
+          <Link
+            to="/dashboard/variantOptions"
+            style={{ textDecoration: 'none' }}
+          >
             <li>
               <CreditCardIcon className="icon" />
               <span>VariantOptions</span>
             </li>
           </Link>
 
-          <li>
-            <LocalShippingIcon className="icon" />
-            <span>Delivery</span>
-          </li>
           <p className="title">USEFUL</p>
           <li>
             <InsertChartIcon className="icon" />

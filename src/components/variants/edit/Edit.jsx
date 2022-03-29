@@ -1,12 +1,11 @@
-import { React, useEffect, useState } from "react";
-import Sidebar from "../../../components/sidebar/Sidebar";
-import Navbar from "../../../components/navbar/Navbar";
-import "./Edit.scss";
-import { useForm } from "react-hook-form";
-import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
-const token =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyM2ZhODA3YmVkZjczNTFkOGQxZGEzZiIsImlhdCI6MTY0ODUwOTczNSwiZXhwIjoxNjU2Mjg1NzM1fQ.dTClfQzGfSkHMbpAr342UvUiWRqLM9BeB1MNEKjZGfw";
+import { React, useEffect, useState } from 'react';
+import Sidebar from '../../../components/sidebar/Sidebar';
+import Navbar from '../../../components/navbar/Navbar';
+import './Edit.scss';
+import { useForm } from 'react-hook-form';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+const token = localStorage.getItem('token');
 const New = ({ title, input }) => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
@@ -25,7 +24,7 @@ const New = ({ title, input }) => {
         data
       );
       if (response?.data?.data?.data) {
-        setValue("name", response?.data?.data?.data.name);
+        setValue('name', response?.data?.data?.data.name);
       }
     };
     getSingleVariant();
@@ -41,7 +40,7 @@ const New = ({ title, input }) => {
         },
       }
     );
-    navigate("/variants", { replace: true });
+    navigate('/dashboard/variants', { replace: true });
   };
 
   return (
@@ -57,7 +56,7 @@ const New = ({ title, input }) => {
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="formInput">
                 <label>Variant Name</label>
-                <input {...register("name", { required: true })} />
+                <input {...register('name', { required: true })} />
                 {errors.name && <span>Variant Name is required</span>}
               </div>
               <div className="formInput">
