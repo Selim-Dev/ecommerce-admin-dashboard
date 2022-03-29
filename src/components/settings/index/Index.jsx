@@ -17,15 +17,30 @@ const Settings = ({ title, input }) => {
   useEffect(() => {
     const getSingleVariant = async () => {
       const response = await axios.get(
-        "http://localhost:3000/api/v1/settings/62428ec79ec09b7688808241",
+        "http://localhost:3000/api/v1/settings",
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
+      console.log(response?.data?.data?.data[0]);
       if (response?.data?.data?.data) {
-        setValue("title", response?.data?.data?.data.title);
+        setValue("title", response?.data?.data?.data[0].title);
+        setValue("description", response?.data?.data?.data[0].description);
+        setValue("phone", response?.data?.data?.data[0].phone);
+        setValue("email", response?.data?.data?.data[0].email);
+        setValue("logo", response?.data?.data?.data[0].logo);
+        setValue("copyright", response?.data?.data?.data[0].copyright);
+        setValue("facebook", response?.data?.data?.data[0].facebook);
+        setValue("instagram", response?.data?.data?.data[0].instagram);
+        setValue("pinterest", response?.data?.data?.data[0].pinterest);
+        setValue("youtube", response?.data?.data?.data[0].youtube);
+        setValue("currency", response?.data?.data?.data[0].currency);
+        setValue(
+          "currencySymbol",
+          response?.data?.data?.data[0].currencySymbol
+        );
       }
     };
     getSingleVariant();
@@ -41,14 +56,14 @@ const Settings = ({ title, input }) => {
         },
       }
     );
-    navigate("/dashboard/settings", { replace: true });
+    navigate("/dashboard", { replace: true });
   };
 
   return (
     <div className="new">
       <div className="newContainer">
         <div className="top">
-          <h1>{title}</h1>
+          <h1>Website Settings</h1>
         </div>
         <div className="bottom">
           <div className="right">
@@ -56,63 +71,69 @@ const Settings = ({ title, input }) => {
               <div className="formInput">
                 <label>Title</label>
                 <input {...register("title", { required: true })} />
+                {errors.title && <span>title is required</span>}
               </div>
-              {errors.title && <span>title is required</span>}
               <div className="formInput">
-                <label>Email</label>
+                <label>Description</label>
                 <input
-                  {...register("email", {
+                  {...register("description", {
                     required: true,
-                    pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                   })}
                 />
+                {errors.description && <span>Description is required</span>}
               </div>
-              {errors.email && <span>Email is required</span>}
               <div className="formInput">
-                <label>Password</label>
-                <input {...register("password", { required: true })} />
+                <label>email</label>
+                <input {...register("email", { required: true })} />
+                {errors.email && <span>email is required</span>}
               </div>
-              {errors.password && <span>password is required</span>}
-              <div className="formInput">
-                <label>PasswordConfirm</label>
-                <input {...register("passwordConfirm", { required: true })} />
-              </div>
-              {errors.passwordConfirm && (
-                <span>passwordConfirm is required</span>
-              )}
               <div className="formInput">
                 <label>phone</label>
                 <input {...register("phone", { required: true })} />
+                {errors.phone && <span>phone is required</span>}
               </div>
-              {errors.phone && <span>phone is required</span>}
               <div className="formInput">
-                <label>role</label>
-                <select {...register("role", { required: true })}>
-                  <option value="user">user</option>0.
-                  <option value="seller">seller</option>
-                </select>
+                <label>logo</label>
+                <input {...register("logo", { required: true })} />
+                {errors.logo && <span>logo is required</span>}
               </div>
-              {errors.role && <span>role is required</span>}
               <div className="formInput">
-                <label>Country</label>
-                <input {...register("address.country", { required: true })} />
+                <label>copyright</label>
+                <input {...register("copyright", { required: true })} />
+                {errors.copyright && <span>copyright is required</span>}
               </div>
-              {errors.address?.country && <span>country is required</span>}
               <div className="formInput">
-                <label>City</label>
-                <input {...register("address.city", { required: true })} />
+                <label>facebook</label>
+                <input {...register("facebook", { required: true })} />
+                {errors.facebook && <span>facebook is required</span>}
               </div>
-              {errors.address?.city && <span>city is required</span>}
               <div className="formInput">
-                <label>Street</label>
-                <input {...register("address.street", { required: true })} />
+                <label>instagram</label>
+                <input {...register("instagram", { required: true })} />
+                {errors.instagram && <span>instagram is required</span>}
               </div>
-              {errors.address?.street && <span>street is required</span>}
               <div className="formInput">
-                <label>Zip Code</label>
-                <input {...register("address.zip", { required: true })} />
+                <label>pinterest</label>
+                <input {...register("pinterest", { required: true })} />
+                {errors.pinterest && <span>pinterest is required</span>}
               </div>
-              {errors.address?.zip && <span>zip code is required</span>}
+              <div className="formInput">
+                <label>youtube</label>
+                <input {...register("youtube", { required: true })} />
+                {errors.youtube && <span>youtube is required</span>}
+              </div>
+              <div className="formInput">
+                <label>currency</label>
+                <input {...register("currency", { required: true })} />
+                {errors.currency && <span>currency is required</span>}
+              </div>
+              <div className="formInput">
+                <label>currencySymbol</label>
+                <input {...register("currencySymbol", { required: true })} />
+                {errors.currencySymbol && (
+                  <span>currencySymbol is required</span>
+                )}
+              </div>
               <div className="formInput">
                 <button>Send</button>
               </div>
