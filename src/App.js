@@ -1,11 +1,25 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./style/dark.scss";
-import Home from "./pages/home/Home";
-import List from "./pages/list/List";
-import Order from "./pages/Order/Order";
-import CreateOrder from "./components/orders/create/Create";
-import EditOrder from "./components/orders/edit/Edit";
-import ShowOrder from "./components/orders/show/Show";
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './style/dark.scss';
+import Home from './pages/home/Home';
+import List from './pages/list/List';
+import Order from './pages/Order/Order';
+import CreateOrder from './components/orders/create/Create';
+import EditOrder from './components/orders/edit/Edit';
+import ShowOrder from './components/orders/show/Show';
+// heroes
+import Hero from './pages/Hero/Hero';
+import CreateHero from './components/heroes/create/Create';
+import EditHero from './components/heroes/edit/Edit';
+// categories
+import Category from './pages/Category/Category';
+import CreateCategory from './components/categories/create/Create';
+import EditCategory from './components/categories/edit/Edit';
+// sub categories
+import SubCategory from './pages/SubCategory/SubCategory';
+import CreateSubCategory from './components/subCategories/create/Create';
+import EditSubCategory from './components/subCategories/edit/Edit';
+
 
 import Variant from "./pages/Variant/Variant";
 import CreateVariant from "./components/variants/create/Create";
@@ -27,9 +41,9 @@ function App() {
     <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
         <Routes>
-          <Route path="/">
+          <Route path="dashboard">
             <Route index element={<Home />} />
-            <Route path="login" element={<LogIn />} />
+            {/* <Route path="login" element={<LogIn />} /> */}
             <Route path="users">
               <Route index element={<List />} />
               <Route path=":userId" element={<Single />} />
@@ -40,6 +54,7 @@ function App() {
               <Route path=":productId" element={<Single />} />
               <Route path="new" element={<New title="Add New Product" />} />
             </Route>
+            {/* Orders */}
             <Route path="orders">
               <Route index element={<Order />} />
               <Route path=":orderId/show" element={<ShowOrder />} />
@@ -68,6 +83,30 @@ function App() {
                 element={
                   <CreateVariantOptions title="Add New variant option" />
                 }
+              />
+            </Route>
+            {/* Heroes */}
+            <Route path="heroes">
+              <Route index element={<Hero />} />
+              <Route path=":heroId/edit" element={<EditHero />} />
+              <Route
+                path="create"
+                element={<CreateHero title="Add New Hero" />}
+              />
+            </Route>
+            {/* Categories */}
+            <Route path="Categories">
+              <Route index element={<Category />} />
+              <Route path=":categoryId/edit" element={<EditCategory />} />
+              <Route path="create" element={<CreateCategory />} />
+            </Route>
+            {/* Sub Categories */}
+            <Route path="subCategories">
+              <Route index element={<SubCategory />} />
+              <Route path="create" element={<CreateSubCategory />} />
+              <Route
+                path=":subCategoryId/category/:categoryId/edit"
+                element={<EditSubCategory />}
               />
             </Route>
           </Route>

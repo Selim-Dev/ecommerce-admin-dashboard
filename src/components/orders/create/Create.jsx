@@ -41,7 +41,7 @@ const New = ({ title, input }) => {
           <h1>{title}</h1>
         </div>
         <div className="bottom">
-          <div className="left">
+          {/* <div className="left">
             <img
               src={
                 file
@@ -50,7 +50,7 @@ const New = ({ title, input }) => {
               }
               alt=""
             />
-          </div>
+          </div> */}
           <div className="right">
             <form onSubmit={handleSubmit(onSubmit)}>
               <Box sx={{ flexGrow: 3 }}>
