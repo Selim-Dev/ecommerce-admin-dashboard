@@ -60,7 +60,7 @@ const New = () => {
     <div className="new">
       <Sidebar />
       <div className="newContainer">
-        <Navbar />
+        {/* <Navbar /> */}
         <div className="top	">
           <h1>Add New Category</h1>
         </div>

@@ -67,9 +67,9 @@ const Sidebar = () => {
               <span>Sub Categories</span>
             </li>
           </Link>
-          <Link to="/products" style={{ textDecoration: 'none' }}>
+          <Link to="/dashboard/products" style={{ textDecoration: 'none' }}>
             <li>
-              <StoreIcon className="icon" />
+              <LocalShippingIcon className="icon" />
               <span>Products</span>
             </li>
           </Link>

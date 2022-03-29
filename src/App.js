@@ -33,7 +33,12 @@ import EditVariant from './components/variants/edit/Edit';
 import VariantsOptions from './pages/VariantOptions/VariantOptions';
 import CreateVariantOptions from './components/variantOptions/create/Create';
 import EditVariantOptions from './components/variantOptions/edit/Edit';
-
+// products
+import Product from './pages/Product/Product';
+import CreateProduct from './components/products/create/Create';
+import EditProduct from './components/products/edit/Edit';
+import ShowProduct from './components/products/show/Show';
+// end products
 import LogIn from './pages/login/LogIn';
 import { useContext } from 'react';
 import { DarkModeContext } from './context/darkModeContext';
@@ -54,6 +59,15 @@ function App() {
               <Route path="new" element={<New title="Add New Product" />} />
             </Route> */}
             {/* Orders */}
+            <Route path="products">
+              <Route index element={<Product />} />
+              <Route path=":productId/show" element={<ShowProduct />} />
+              <Route path=":productId/edit" element={<EditProduct />} />
+              <Route
+                path="create"
+                element={<CreateProduct title="Add New Product" />}
+              />
+            </Route>
             <Route path="orders">
               <Route index element={<Order />} />
               <Route path=":orderId/show" element={<ShowOrder />} />
